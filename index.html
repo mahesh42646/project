@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Projects Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      :root {
+        --primary: #0066CC;
+        --primary-light: #4D94FF;
+        --primary-dark: #004C99;
+        --secondary: #6C757D;
+        --accent: #FF9500;
+        --success: #28A745;
+        --warning: #FFC107;
+        --error: #DC3545;
+        --neutral-100: #F8F9FA;
+        --neutral-200: #E9ECEF;
+        --neutral-300: #DEE2E6;
+        --neutral-400: #CED4DA;
+        --neutral-500: #ADB5BD;
+        --neutral-600: #6C757D;
+        --neutral-700: #495057;
+        --neutral-800: #343A40;
+        --neutral-900: #212529;
+        --font-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        --transition-fast: 0.2s;
+        --transition-medium: 0.3s;
+        --transition-slow: 0.5s;
+      }
+
+      body {
+        font-family: var(--font-primary);
+        color: var(--neutral-800);
+        background-color: var(--neutral-100);
+        line-height: 1.5;
+      }
+
+      .header {
+        background-color: var(--primary);
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .header::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        right: 0;
+        height: 20px;
+        background-color: var(--neutral-100);
+        border-radius: 50% 50% 0 0;
+      }
+
+      /* Buttons & Filters */
+      .btn-filter {
+        border: none;
+        background-color: transparent;
+        color: white;
+        margin-left: 0.5rem;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-weight: 500;
+        transition: all var(--transition-fast) ease;
+      }
+
+      .btn-filter:hover, .btn-filter.active {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .btn-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--primary);
+        transition: all var(--transition-fast) ease;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+      }
+
+      .btn-back:hover {
+        background-color: var(--neutral-200);
+        color: var(--primary-dark);
+      }
+
+      /* Project Cards */
+      .project-card {
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transition: all var(--transition-medium) ease;
+        cursor: pointer;
+        height: 100%;
+        background-color: rgb(234, 234, 234);
+        border:0.1px solid rgb(169, 169, 169)
+      }
+
+      .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      }
+
+      .project-card-image {
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .project-card-body {
+        padding: 1.5rem;
+
+      }
+
+      .project-category {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+      }
+
+      .project-category.web {
+        background-color: rgba(0, 102, 204, 0.1);
+        color: var(--primary);
+      }
+
+      .project-category.mobile {
+        background-color: rgba(255, 149, 0, 0.1);
+        color: var(--accent);
+      }
+
+      .project-category.design {
+        background-color: rgba(220, 53, 69, 0.1);
+        color: var(--error);
+      }
+
+      /* Project Details */
+      .project-details {
+        opacity: 0;
+        transition: opacity var(--transition-medium) ease;
+      }
+
+      .project-details.visible {
+        opacity: 1;
+      }
+
+      .project-hero {
+        height: 93dvh;
+        width: 100%;
+        background-size: contain;
+        background-position: center;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        position: relative;
+      }
+
+      .project-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin: 2rem 0;
+      }
+
+      .project-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+        margin: 2rem 0;
+      }
+
+      .gallery-image {
+        border-radius: 8px;
+        overflow: hidden;
+        height: 180px;
+      }
+
+      .gallery-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform var(--transition-medium) ease;
+      }
+
+      .gallery-image:hover img {
+        transform: scale(1.05);
+      }
+
+      /* Animation Classes */
+      .fade-in {
+        animation: fadeIn var(--transition-medium) ease forwards;
+      }
+
+      .fade-out {
+        animation: fadeOut var(--transition-fast) ease forwards;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes fadeOut {
+        from { opacity: 1; transform: translateY(0); }
+        to { opacity: 0; transform: translateY(10px); }
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .filters {
+          margin-top: 1rem;
+          text-align: left;
+        }
+        
+        .btn-filter {
+          margin-left: 0;
+          margin-right: 0.5rem;
+          margin-bottom: 0.5rem;
+          font-size: 0.9rem;
+        }
+        
+        .project-info {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+        
+        .project-hero {
+          height: 250px;
+        }
+      }
+
+      /* Footer */
+      .footer {
+        background-color: var(--neutral-800);
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="projects-container" class="container-fluid p-0">
+      <header class="header py-4 mb-5">
+        <div class="container">
+          <div class="row align-items-center w-100">
+            <h1 class="display fw-bold text-center" id="page-title">Mahesh Darkunde</h1>
+            <!-- <div class="col-md-6">
+            
+              <p class="lead" id="page-subtitle">A showcase of my recent work and expertise</p>
+            </div> -->
+            <!-- <div class="col-md- text-md-center">
+              <div class="filters" id="project-filters">
+                <button class="btn btn-filter active" data-filter="all">All</button>
+                <button class="btn btn-filter" data-filter="web">Web</button>
+                <button class="btn btn-filter" data-filter="mobile">Mobile</button>
+                <button class="btn btn-filter" data-filter="design">Design</button>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </header>
+
+      <main class="container mb-5">
+        <!-- Projects List View -->
+        <div id="projects-list" class="row g-4">
+          <!-- Projects will be dynamically inserted here -->
+        </div>
+
+        <!-- Single Project View -->
+        <div id="project-details" class="project-details d-none">
+          <button id="back-button" class="btn btn-back mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+            Back to Projects
+          </button>
+          <div class="project-content">
+            <!-- Project details will be dynamically inserted here -->
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer py-4 mt-5">
+        <div class="container text-center">
+          <p>&copy; 2025 My Portfolio. Mahesh Darkunde.</p>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Bootstrap & Custom Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Projects data array
+      const projectsData = [
+        {
+          id: 1,
+          title: "Rasha - Women's Health & Wellness Products",
+          category: "web",
+          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746268729/Screenshot_2025-05-03_at_4.07.54_PM_ihfxmi.png",
+          image: "https://images.pexels.com/photos/5077047/pexels-photo-5077047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          description: "E-commerce platform for women's health supplements and wellness products with product management and payment integration.",
+          fullDescription: "Built a comprehensive e-commerce platform for Rasha, a women's health and wellness brand offering supplements crafted specifically for women. The website includes robust product management, shopping cart functionality, and seamless payment gateway integration. Features categories for gut health, detox, fitness, hydration, skin & hair products.",
+          technologies: ["Shopify", "E-commerce", "Payment Integration", "Responsive Design"],
+          client: "Rasha",
+          duration: "4 months",
+          year: "2024",
+          link: "https://www.myrasha.com/",
+          gallery: [
+            "https://images.pexels.com/photos/5077047/pexels-photo-5077047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/5082579/pexels-photo-5082579.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          ]
+        },
+        {
+          id: 2,
+          title: "CET-ATAL Mock Test Platform",
+          category: "web",
+          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746268891/Screenshot_2025-05-03_at_4.11.02_PM_we5gai.png",
+          image: "https://images.pexels.com/photos/4498362/pexels-photo-4498362.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          description: "MHT CET Cell is the official body in Maharashtra that conducts the MHT CET entrance exam for engineering, pharmacy, and other professional courses.",
+          fullDescription: "Developed the CET-ATAL (Assessment, Tests and Learning) platform for the Maharashtra State CET Cell to help candidates prepare for professional course entrance exams. The platform provides mock tests that simulate the real exam environment and psychometric tests to help students identify their ideal career paths.",
+          technologies: ["React", "Node.js", "MongoDB", "Assessment Engine"],
+          client: "Maharashtra State Common Entrance Test Cell",
+          duration: "6 months",
+          year: "2023",
+          link: "https://cetcell.mahacet.org/",
+          gallery: [
+            "https://images.pexels.com/photos/4498362/pexels-photo-4498362.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/4498603/pexels-photo-4498603.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/4498148/pexels-photo-4498148.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          ]
+        },
+        {
+          id: 3,
+          title: "MHT CET Mock Test Platform",
+          category: "web",
+          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746269266/Screenshot_2025-05-03_at_4.17.24_PM_epecvc.png",
+          image: "https://images.pexels.com/photos/5537585/pexels-photo-5537585.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          description: "Complete online platform for MHT-CET exam preparation with practice tests, performance analysis and comparative ranking.",
+          fullDescription: "Created a dedicated practice platform for MHT-CET engineering, pharmacy and agriculture entrance exam preparation. The system features mock tests aligned with the latest syllabus, detailed performance analysis, question-wise time utilization data, and comparative ranking against other test takers.",
+          technologies: ["Web Development", "Testing Platform", "Analytics Dashboard", "User Management"],
+          client: "MHT CET Preparation",
+          duration: "3 months",
+          year: "2023",
+          link: "https://www.mhtcetmocktest.com/",
+          gallery: [
+            "https://images.pexels.com/photos/5537585/pexels-photo-5537585.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/5849592/pexels-photo-5849592.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/5538597/pexels-photo-5538597.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          ]
+        },
+        {
+          id: 4,
+          title: "College of Engineering Ambajogai Website",
+          category: "web",
+          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746269633/Screenshot_2025-05-03_at_4.22.55_PM_rtcfao.png",
+          image: "https://images.pexels.com/photos/3937174/pexels-photo-3937174.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          description: "Official website for Mahatma Basaveshwar Education Society's College of Engineering in Ambajogai with program information and student resources.",
+          fullDescription: "Designed and developed the official website for College of Engineering, Ambajogai. The website highlights the institution's programs, facilities, and student resources. It includes information about undergraduate and postgraduate engineering programs, faculty details, campus facilities, and admission procedures.",
+          technologies: ["WordPress", "Responsive Design", "Content Management", "Educational Portal"],
+          client: "College of Engineering, Ambajogai",
+          duration: "5 months",
+          year: "2024",
+          link: "https://www.coea.ac.in/",
+          gallery: [
+            "https://images.pexels.com/photos/3937174/pexels-photo-3937174.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/4221775/pexels-photo-4221775.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/4219103/pexels-photo-4219103.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          ]
+        },
+        {
+          id: 5,
+          title: "Connect My Designer",
+          category: "web",
+          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746269920/Screenshot_2025-05-03_at_4.28.00_PM_n2xcfg.png",
+          image: "https://images.pexels.com/photos/3935702/pexels-photo-3935702.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          description: "Platform connecting users with designers for customizable sustainable apparel with artist collaborations.",
+          fullDescription: "Built a platform that connects users with designers for customizable sustainable apparel. The platform allows users to express themselves by adding their own text, artwork, and photos to create personalized clothing items. It also features work from international artists and promotes sustainable, ethically-sourced materials.",
+          technologies: ["E-commerce", "Customization Tools", "Artist Marketplace", "Sustainable Products"],
+          client: "Connect One Design",
+          duration: "7 months",
+          year: "2023",
+          link: "https://www.connectmydesigner.com/",
+          gallery: [
+            "https://images.pexels.com/photos/3935702/pexels-photo-3935702.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/4353813/pexels-photo-4353813.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/4386426/pexels-photo-4386426.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          ]
+        },
+        {
+          id: 6,
+          title: "Einterio - Online Interior Design Platform",
+          category: "web",
+          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746270056/Screenshot_2025-05-03_at_4.30.33_PM_eo9anl.png",
+          image: "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          description: "Virtual interior design service platform providing 3D design visualization, expert designer collaboration, and furniture recommendations.",
+          fullDescription: "Developed Einterio, India's first online interior design platform that connects users with professional designers. The service offers 3D design visualization, expert designer collaboration, and curated furniture recommendations. Users can transform their spaces virtually before making actual changes, all at an affordable price compared to traditional interior design services.",
+          technologies: ["3D Visualization", "Designer Marketplace", "E-commerce Integration", "Interior Design Tools"],
+          client: "Einterio (Entriore Design LLP)",
+          duration: "6 months",
+          year: "2024",
+          link: "https://einterio.com/",
+          gallery: [
+            "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/4347366/pexels-photo-4347366.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/7978827/pexels-photo-7978827.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          ]
+        },
+        {
+          id: 7,
+          title: "MKT78 - Digital Marketing Agency",
+          category: "web",
+          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746270233/Screenshot_2025-05-03_at_4.33.24_PM_c56n7p.png",
+          image: "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          description: "Website for a digital marketing agency specializing in SEO, content marketing, and online advertising solutions.",
+          fullDescription: "Developed a professional website for MKT78, a digital marketing agency that helps businesses grow through search engine optimization, content marketing, and targeted online advertising campaigns. The site showcases their services, case studies, and client testimonials with a clean, modern design.",
+          technologies: ["WordPress", "Responsive Design", "SEO Optimization", "Content Management"],
+          client: "MKT78 Digital Marketing",
+          duration: "2 months",
+          year: "2024",
+          link: "https://mkt78.com/",
+          gallery: [
+            "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/4347366/pexels-photo-4347366.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/7978827/pexels-photo-7978827.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          ]
+        },
+        {
+          id: 8,
+          title: "PostPatra - Postal Services Platform",
+          category: "web",
+          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746273201/Screenshot_2025-05-03_at_5.22.35_PM_pyyzhk.png",
+          image: "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          description: "Digital platform for postal and courier services, tracking, and delivery management in India.",
+          fullDescription: "Built PostPatra, a comprehensive digital platform for postal and courier services in India. The platform enables users to track packages, schedule pickups, manage deliveries, and access various postal services online. Features a user-friendly interface with real-time tracking capabilities.",
+          technologies: ["Web Development", "Tracking System", "Payment Integration", "User Management"],
+          client: "PostPatra Services",
+          duration: "3 months",
+          year: "2024",
+          link: "https://www.postpatra.com/",
+          gallery: [
+            "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/4347366/pexels-photo-4347366.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/7978827/pexels-photo-7978827.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          ]
+        },
+        {
+          id: 9,
+          title: "Feofo - E-commerce Feedback Platform",
+          category: "web",
+          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746273298/Screenshot_2025-05-03_at_5.24.26_PM_ex56vk.png",
+          image: "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          description: "Customer feedback and review management platform for e-commerce businesses and online retailers.",
+          fullDescription: "Developed Feofo, an integrated feedback platform for e-commerce businesses that collects, analyzes, and displays customer reviews. The platform helps online retailers build trust with potential customers by showcasing verified reviews and ratings, improving conversion rates and customer satisfaction.",
+          technologies: ["Review System", "Analytics Dashboard", "API Integration", "E-commerce Tools"],
+          client: "Feofo Solutions",
+          duration: "4 months",
+          year: "2024",
+          link: "https://feofo.com/",
+          gallery: [
+            "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/4347366/pexels-photo-4347366.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/7978827/pexels-photo-7978827.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          ]
+        },
+        {
+          id: 10,
+          title: "Sell My Dyson - Specialized Resale Platform",
+          category: "web",
+          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746273491/Screenshot_2025-05-03_at_5.27.29_PM_c4bqb3.png",
+          image: "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          description: "Specialized e-commerce platform for buying and selling pre-owned Dyson products in the UK.",
+          fullDescription: "Created a niche e-commerce platform dedicated to buying and selling pre-owned Dyson products in the UK. The website features product listing capabilities, condition assessments, pricing tools, and secure payment processing. The platform helps extend the lifecycle of quality Dyson products while offering users fair pricing.",
+          technologies: ["E-commerce", "Payment Processing", "Product Management", "Marketplace Tools"],
+          client: "Sell My Dyson UK",
+          duration: "3 months",
+          year: "2024",
+          link: "https://sellmydyson.co.uk/",
+          gallery: [
+            "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/4347366/pexels-photo-4347366.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/7978827/pexels-photo-7978827.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          ]
+        },
+        {
+          id: 11,
+          title: "Sarkari Saathi - Government Services Portal",
+          category: "web",
+          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746273611/Screenshot_2025-05-03_at_5.28.51_PM_zuz7mx.png",
+          image: "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          description: "Comprehensive portal for accessing government schemes, services, and information for Indian citizens.",
+          fullDescription: "Developed Sarkari Saathi, a comprehensive platform that simplifies access to government schemes, services, and information for Indian citizens. The portal aggregates data from various government departments, provides application guidance for welfare programs, and delivers updates on job opportunities, exam notifications, and important deadlines.",
+          technologies: ["Information Portal", "Search System", "Government APIs", "User Authentication"],
+          client: "Sarkari Saathi Services",
+          duration: "5 months",
+          year: "2024",
+          link: "https://sarkarisaathi.com/",
+          gallery: [
+            "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/4347366/pexels-photo-4347366.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/7978827/pexels-photo-7978827.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          ]
+        },
+        {
+          id: 12,
+          title: "management of cultural notices",
+          category: "web",
+          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746273729/Screenshot_2025-05-03_at_5.31.36_PM_ki6cj8.png",
+          image: "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          description: "Smart solution for management of cultural notices and implementation of laws to encourage culture",
+          fullDescription: "Built 0Fare, an innovative travel fare aggregator and comparison platform that helps users find the most cost-effective transportation options. The system analyzes data from multiple providers to suggest optimal routes, timing, and booking strategies, potentially reducing travel costs significantly while maintaining quality and convenience.",
+          technologies: ["Price Comparison", "Route Optimization", "API Integration", "Travel Technology"],
+          client: "0Fare Travel Solutions",
+          duration: "4 months",
+          year: "2024",
+          link: "https://0fare.com/",
+          gallery: [
+            "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/4347366/pexels-photo-4347366.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/7978827/pexels-photo-7978827.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          ]
+        },
+      ];
+
+      // DOM Elements
+      const projectsList = document.getElementById('projects-list');
+      const projectDetails = document.getElementById('project-details');
+      const projectContent = document.querySelector('.project-content');
+      const backButton = document.getElementById('back-button');
+      const filterButtons = document.querySelectorAll('.btn-filter');
+
+      // Initialize the application
+      document.addEventListener('DOMContentLoaded', () => {
+        renderProjects('all');
+        setupEventListeners();
+      });
+
+      // Setup Event Listeners
+      function setupEventListeners() {
+        // Filter buttons
+        filterButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const filter = button.getAttribute('data-filter');
+            
+            // Update active state
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // Render filtered projects
+            renderProjects(filter);
+          });
+        });
+
+        // Back button
+        backButton.addEventListener('click', showProjectsList);
+      }
+
+      // Render Projects
+      function renderProjects(filter) {
+        projectsList.innerHTML = '';
+        
+        const filteredProjects = filter === 'all' 
+          ? projectsData 
+          : projectsData.filter(project => project.category === filter);
+        
+        filteredProjects.forEach(project => {
+          const projectCard = createProjectCard(project);
+          projectsList.appendChild(projectCard);
+        });
+
+        // Add animation
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach((card, index) => {
+          setTimeout(() => {
+            card.classList.add('fade-in');
+          }, index * 100);
+        });
+      }
+
+      // Create Project Card
+      function createProjectCard(project) {
+        const col = document.createElement('div');
+        col.className = 'col-sm-6 col-lg-4 mb-4';
+
+        col.innerHTML = `
+          <div class="project-card " data-id="${project.id}">
+            <div class="project-card-image" style="background-image: url('${project.thumbnail}')"></div>
+            <div class="project-card-body">
+              <span class="project-category ${project.category}">${project.category}</span>
+              <h3 class="h5 mb-2">${project.title}</h3>
+              <p class="text-muted">${project.description}</p>
+            </div>
+          </div>
+        `;
+
+        // Add click event to open project link in new tab
+        col.querySelector('.project-card').addEventListener('click', () => {
+          window.open(project.link, '_blank');
+        });
+
+        return col;
+      }
+
+      // Show Project Details
+      function showProjectDetails(projectId) {
+        const project = projectsData.find(p => p.id === projectId);
+        
+        if (!project) return;
+        
+        // Update page title
+        document.getElementById('page-title').textContent = project.title;
+        document.getElementById('page-subtitle').textContent = `${project.category} project - ${project.year}`;
+        
+        // Create project details HTML
+        projectContent.innerHTML = `
+          <div class="project-hero" style="background-image: url('${project.thumbnail}')"></div>
+          <h1 class="display-5 fw-bold mb-4">${project.title}</h1>
+          <p class="lead mb-4">${project.fullDescription}</p>
+          
+          <div class="project-info">
+            <div>
+              <h3 class="h5 mb-3">Project Details</h3>
+              <p><strong>Client:</strong> ${project.client}</p>
+              <p><strong>Duration:</strong> ${project.duration}</p>
+              <p><strong>Year:</strong> ${project.year}</p>
+              <p><strong>Project URL:</strong> <a href="${project.link}" target="_blank">${project.link}</a></p>
+            </div>
+            <div>
+              <h3 class="h5 mb-3">Technologies Used</h3>
+              <ul>
+                ${project.technologies.map(tech => `<li>${tech}</li>`).join('')}
+              </ul>
+            </div>
+          </div>
+          
+         
+        `;
+        // <h3 class="h4 mt-5 mb-4">Project Gallery</h3>
+        //   <div class="project-gallery">
+        //     ${project.gallery.map(image => `
+        //       <div class="gallery-image">
+        //         <img src="${image}" alt="${project.title}">
+        //       </div>
+        //     `).join('')}
+        //   </div>
+        // Hide projects list, show details
+        projectsList.classList.add('fade-out');
+        setTimeout(() => {
+          projectsList.classList.add('d-none');
+          projectDetails.classList.remove('d-none');
+          setTimeout(() => {
+            projectDetails.classList.add('visible');
+          }, 50);
+        }, 300);
+      }
+
+      // Show Projects List
+      function showProjectsList() {
+        // Reset page title
+        document.getElementById('page-title').textContent = 'My Projects';
+        document.getElementById('page-subtitle').textContent = 'A showcase of my recent work and expertise';
+        
+        // Hide details, show list
+        projectDetails.classList.remove('visible');
+        setTimeout(() => {
+          projectDetails.classList.add('d-none');
+          projectsList.classList.remove('d-none');
+          projectsList.classList.remove('fade-out');
+        }, 300);
+      }
+    </script>
+  </body>
+</html>
