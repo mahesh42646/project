@@ -1,287 +1,304 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Projects Portfolio</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-      :root {
-        --primary: #0066CC;
-        --primary-light: #4D94FF;
-        --primary-dark: #004C99;
-        --secondary: #6C757D;
-        --accent: #FF9500;
-        --success: #28A745;
-        --warning: #FFC107;
-        --error: #DC3545;
-        --neutral-100: #F8F9FA;
-        --neutral-200: #E9ECEF;
-        --neutral-300: #DEE2E6;
-        --neutral-400: #CED4DA;
-        --neutral-500: #ADB5BD;
-        --neutral-600: #6C757D;
-        --neutral-700: #495057;
-        --neutral-800: #343A40;
-        --neutral-900: #212529;
-        --font-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        --transition-fast: 0.2s;
-        --transition-medium: 0.3s;
-        --transition-slow: 0.5s;
-      }
 
-      body {
-        font-family: var(--font-primary);
-        color: var(--neutral-800);
-        background-color: var(--neutral-100);
-        line-height: 1.5;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Projects Portfolio</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0066CC;
+      --primary-light: #4D94FF;
+      --primary-dark: #004C99;
+      --secondary: #6C757D;
+      --accent: #FF9500;
+      --success: #28A745;
+      --warning: #FFC107;
+      --error: #DC3545;
+      --neutral-100: #F8F9FA;
+      --neutral-200: #E9ECEF;
+      --neutral-300: #DEE2E6;
+      --neutral-400: #CED4DA;
+      --neutral-500: #ADB5BD;
+      --neutral-600: #6C757D;
+      --neutral-700: #495057;
+      --neutral-800: #343A40;
+      --neutral-900: #212529;
+      --font-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --transition-fast: 0.2s;
+      --transition-medium: 0.3s;
+      --transition-slow: 0.5s;
+    }
 
-      .header {
-        background-color: var(--primary);
-        color: white;
-        position: relative;
-        overflow: hidden;
-      }
+    body {
+      font-family: var(--font-primary);
+      color: var(--neutral-800);
+      background-color: var(--neutral-100);
+      line-height: 1.5;
+    }
 
-      .header::after {
-        content: '';
-        position: absolute;
-        bottom: -10px;
-        left: 0;
-        right: 0;
-        height: 20px;
-        background-color: var(--neutral-100);
-        border-radius: 50% 50% 0 0;
-      }
+    .header {
+      background-color: var(--primary);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
 
-      /* Buttons & Filters */
-      .btn-filter {
-        border: none;
-        background-color: transparent;
-        color: white;
-        margin-left: 0.5rem;
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-        font-weight: 500;
-        transition: all var(--transition-fast) ease;
-      }
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      right: 0;
+      height: 20px;
+      background-color: var(--neutral-100);
+      border-radius: 50% 50% 0 0;
+    }
 
-      .btn-filter:hover, .btn-filter.active {
-        background-color: rgba(255, 255, 255, 0.2);
-      }
+    /* Buttons & Filters */
+    .btn-filter {
+      border: none;
+      background-color: transparent;
+      color: white;
+      margin-left: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: 500;
+      transition: all var(--transition-fast) ease;
+    }
 
-      .btn-back {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: var(--primary);
-        transition: all var(--transition-fast) ease;
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-      }
+    .btn-filter:hover,
+    .btn-filter.active {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
 
-      .btn-back:hover {
-        background-color: var(--neutral-200);
-        color: var(--primary-dark);
-      }
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary);
+      transition: all var(--transition-fast) ease;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+    }
 
-      /* Project Cards */
-      .project-card {
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        transition: all var(--transition-medium) ease;
-        cursor: pointer;
-        height: 100%;
-        background-color: rgb(234, 234, 234);
-        border:0.1px solid rgb(169, 169, 169)
-      }
+    .btn-back:hover {
+      background-color: var(--neutral-200);
+      color: var(--primary-dark);
+    }
 
-      .project-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-      }
+    /* Project Cards */
+    .project-card {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: all var(--transition-medium) ease;
+      cursor: pointer;
+      height: 100%;
+      background-color: rgb(234, 234, 234);
+      border: 0.1px solid rgb(169, 169, 169)
+    }
 
-      .project-card-image {
-        height: 200px;
-        background-size: cover;
-        background-position: center;
-      }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
 
-      .project-card-body {
-        padding: 1.5rem;
+    .project-card-image {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+    }
 
-      }
+    .project-card-body {
+      padding: 1.5rem;
 
-      .project-category {
-        display: inline-block;
-        padding: 0.25rem 0.75rem;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 500;
-        margin-bottom: 0.5rem;
-      }
+    }
 
-      .project-category.web {
-        background-color: rgba(0, 102, 204, 0.1);
-        color: var(--primary);
-      }
+    .project-category {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
 
-      .project-category.mobile {
-        background-color: rgba(255, 149, 0, 0.1);
-        color: var(--accent);
-      }
+    .project-category.web {
+      background-color: rgba(0, 102, 204, 0.1);
+      color: var(--primary);
+    }
 
-      .project-category.design {
-        background-color: rgba(220, 53, 69, 0.1);
-        color: var(--error);
-      }
+    .project-category.mobile {
+      background-color: rgba(255, 149, 0, 0.1);
+      color: var(--accent);
+    }
 
-      .tech-stack {
-        display: inline-block;
-        padding: 0.25rem 0.75rem;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 500;
-        margin-bottom: 0.5rem;
-        margin-right: 0.5rem;
-        background-color: rgba(0, 102, 204, 0.1);
-        color: var(--primary);
-      }
+    .project-category.design {
+      background-color: rgba(220, 53, 69, 0.1);
+      color: var(--error);
+    }
 
-      .btn-visit {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        background-color: var(--primary);
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-        text-decoration: none;
-        font-size: 0.9rem;
-        font-weight: 500;
-        transition: all var(--transition-fast) ease;
-        border: none;
-        cursor: pointer;
-      }
+    .tech-stack {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      margin-right: 0.5rem;
+      background-color: rgba(0, 102, 204, 0.1);
+      color: var(--primary);
+    }
 
-      .btn-visit:hover {
-        background-color: var(--primary-dark);
-        color: white;
-        transform: translateY(-2px);
-      }
+    .btn-visit {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: var(--primary);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all var(--transition-fast) ease;
+      border: none;
+      cursor: pointer;
+    }
 
-      /* Project Details */
-      .project-details {
+    .btn-visit:hover {
+      background-color: var(--primary-dark);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Project Details */
+    .project-details {
+      opacity: 0;
+      transition: opacity var(--transition-medium) ease;
+    }
+
+    .project-details.visible {
+      opacity: 1;
+    }
+
+    .project-hero {
+      height: 93dvh;
+      width: 100%;
+      background-size: contain;
+      background-position: center;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .project-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .project-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .gallery-image {
+      border-radius: 8px;
+      overflow: hidden;
+      height: 180px;
+    }
+
+    .gallery-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-medium) ease;
+    }
+
+    .gallery-image:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Animation Classes */
+    .fade-in {
+      animation: fadeIn var(--transition-medium) ease forwards;
+    }
+
+    .fade-out {
+      animation: fadeOut var(--transition-fast) ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
         opacity: 0;
-        transition: opacity var(--transition-medium) ease;
+        transform: translateY(10px);
       }
 
-      .project-details.visible {
+      to {
         opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+        transform: translateY(0);
       }
 
-      .project-hero {
-        height: 93dvh;
-        width: 100%;
-        background-size: contain;
-        background-position: center;
-        border-radius: 12px;
-        margin-bottom: 2rem;
-        position: relative;
+      to {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .filters {
+        margin-top: 1rem;
+        text-align: left;
+      }
+
+      .btn-filter {
+        margin-left: 0;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
       }
 
       .project-info {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-        margin: 2rem 0;
-      }
-
-      .project-gallery {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-template-columns: 1fr;
         gap: 1rem;
-        margin: 2rem 0;
       }
 
-      .gallery-image {
-        border-radius: 8px;
-        overflow: hidden;
-        height: 180px;
+      .project-hero {
+        height: 250px;
       }
+    }
 
-      .gallery-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform var(--transition-medium) ease;
-      }
+    /* Footer */
+    .footer {
+      background-color: var(--neutral-800);
+      color: white;
+    }
+  </style>
+</head>
 
-      .gallery-image:hover img {
-        transform: scale(1.05);
-      }
-
-      /* Animation Classes */
-      .fade-in {
-        animation: fadeIn var(--transition-medium) ease forwards;
-      }
-
-      .fade-out {
-        animation: fadeOut var(--transition-fast) ease forwards;
-      }
-
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-
-      @keyframes fadeOut {
-        from { opacity: 1; transform: translateY(0); }
-        to { opacity: 0; transform: translateY(10px); }
-      }
-
-      /* Responsive adjustments */
-      @media (max-width: 768px) {
-        .filters {
-          margin-top: 1rem;
-          text-align: left;
-        }
-        
-        .btn-filter {
-          margin-left: 0;
-          margin-right: 0.5rem;
-          margin-bottom: 0.5rem;
-          font-size: 0.9rem;
-        }
-        
-        .project-info {
-          grid-template-columns: 1fr;
-          gap: 1rem;
-        }
-        
-        .project-hero {
-          height: 250px;
-        }
-      }
-
-      /* Footer */
-      .footer {
-        background-color: var(--neutral-800);
-        color: white;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="projects-container" class="container-fluid p-0">
-      <header class="header py-4 mb-5">
-        <div class="container">
-          <div class="row align-items-center w-100">
-            <h1 class="display fw-bold text-center" id="page-title">Mahesh Darkunde</h1>
-            <!-- <div class="col-md-6">
+<body>
+  <div id="projects-container" class="container-fluid p-0">
+    <header class="header py-4 mb-5">
+      <div class="container">
+        <div class="row align-items-center w-100">
+          <h1 class="display fw-bold text-center" id="page-title">Mahesh Darkunde</h1>
+          <!-- <div class="col-md-6">
             
               <p class="lead" id="page-subtitle">A showcase of my recent work and expertise</p>
             </div>
@@ -293,321 +310,325 @@
                 <button class="btn btn-filter" data-filter="design">Design</button>
               </div>
             </div> -->
-          </div>
         </div>
-      </header>
+      </div>
+    </header>
 
-      <main class="container mb-5">
-        <!-- Projects List View -->
-        <div id="projects-list" class="row g-4">
-          <!-- Projects will be dynamically inserted here -->
+    <main class="container mb-5">
+      <!-- Projects List View -->
+      <div id="projects-list" class="row g-4">
+        <!-- Projects will be dynamically inserted here -->
+      </div>
+
+      <!-- Single Project View -->
+      <div id="project-details" class="project-details d-none">
+        <button id="back-button" class="btn btn-back mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m12 19-7-7 7-7" />
+            <path d="M19 12H5" />
+          </svg>
+          Back to Projects
+        </button>
+        <div class="project-content">
+          <!-- Project details will be dynamically inserted here -->
         </div>
+      </div>
+    </main>
 
-        <!-- Single Project View -->
-        <div id="project-details" class="project-details d-none">
-          <button id="back-button" class="btn btn-back mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
-            Back to Projects
-          </button>
-          <div class="project-content">
-            <!-- Project details will be dynamically inserted here -->
-          </div>
-        </div>
-      </main>
+    <footer class="footer py-4 mt-5">
+      <div class="container text-center">
+        <p>&copy; 2025 My Portfolio. Mahesh Darkunde.</p>
+      </div>
+    </footer>
+  </div>
 
-      <footer class="footer py-4 mt-5">
-        <div class="container text-center">
-          <p>&copy; 2025 My Portfolio. Mahesh Darkunde.</p>
-        </div>
-      </footer>
-    </div>
+  <!-- Bootstrap & Custom Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Projects data array
+    const projectsData = [
+      {
+        id: 1,
+        title: "MHT CET Cell",
+        category: "web",
+        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746268891/Screenshot_2025-05-03_at_4.11.02_PM_we5gai.png",
+        description: "MHT CET Cell is the official body in Maharashtra that conducts the MHT CET entrance exam for engineering, pharmacy, and other professional courses.",
+        technologies: ["React.js", "Node.js", "MongoDB", "Assessment Engine"],
+        link: "https://cetcell.mahacet.org/"
+      },
+      {
+        id: 2,
+        title: "MHT CET Mock Test Platform",
+        category: "web",
+        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746269266/Screenshot_2025-05-03_at_4.17.24_PM_epecvc.png",
+        description: "Complete online platform for MHT-CET exam preparation with practice tests, performance analysis and comparative ranking.",
+        technologies: ["PHP", "Web Development", "Testing Platform", "Analytics Dashboard", "User Management"],
+        link: "https://www.mhtcetmocktest.com/"
+      },
+      {
+        id: 3,
+        title: "College of Engineering Ambajogai Website",
+        category: "web",
+        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746269633/Screenshot_2025-05-03_at_4.22.55_PM_rtcfao.png",
+        description: "Official website for Mahatma Basaveshwar Education Society's College of Engineering in Ambajogai with program information and student resources.",
+        technologies: ["WordPress", "Responsive Design", "Content Management", "Educational Portal"],
+        link: "https://www.coea.ac.in/"
+      },
+      {
+        id: 4,
+        title: "Einterio - Online Interior Design Platform",
+        category: "web",
+        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746270056/Screenshot_2025-05-03_at_4.30.33_PM_eo9anl.png",
+        description: "Virtual interior design service platform providing 3D design visualization, expert designer collaboration, and furniture recommendations.",
+        technologies: ["3D Visualization", "Designer Marketplace", "E-commerce Integration", "Interior Design Tools"],
+        link: "https://einterio.com/"
+      },
+      {
+        id: 5,
+        title: "MKT78 - Digital Marketing Agency",
+        category: "web",
+        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746270233/Screenshot_2025-05-03_at_4.33.24_PM_c56n7p.png",
+        description: "Website for a digital marketing agency specializing in SEO, content marketing, and online advertising solutions.",
+        technologies: ["WordPress", "Responsive Design", "SEO Optimization", "Content Management"],
+        link: "https://mkt78.com/"
+      },
+      {
+        id: 6,
+        title: "Feofo - E-commerce Feedback Platform",
+        category: "web",
+        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746273298/Screenshot_2025-05-03_at_5.24.26_PM_ex56vk.png",
+        description: "Customer feedback and review management platform for e-commerce businesses and online retailers.",
+        technologies: ["WordPress/PHP", "Analytics Dashboard", "API Integration", "E-commerce Tools"],
+        link: "https://feofo.com/"
+      },
+      {
+        id: 7,
+        title: "Sell My Dyson - Specialized Resale Platform",
+        category: "web",
+        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746273491/Screenshot_2025-05-03_at_5.27.29_PM_c4bqb3.png",
+        description: "Specialized e-commerce platform for buying and selling pre-owned Dyson products in the UK.",
+        technologies: ["E-commerce", "Payment Processing", "Product Management", "Marketplace Tools"],
+        link: "https://sellmydyson.co.uk/"
+      },
+      {
+        id: 8,
+        title: "Sarkari Saathi - Government Services Portal",
+        category: "web",
+        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746273611/Screenshot_2025-05-03_at_5.28.51_PM_zuz7mx.png",
+        description: "Comprehensive portal for accessing government schemes, services, and information for Indian citizens.",
+        technologies: ["HTML", "Search System", "Government APIs", "User Authentication"],
+        link: "https://sarkarisaathi.com/"
+      },
+      {
+        id: 9,
+        title: "management of cultural notices",
+        category: "web",
+        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746273729/Screenshot_2025-05-03_at_5.31.36_PM_ki6cj8.png",
+        description: "Smart solution for management of cultural notices and implementation of laws to encourage culture",
+        technologies: ["React.js", "Price Comparison", "Route Optimization", "API Integration", "Travel Technology"],
+        link: "https://0fare.com/"
+      },
+      {
+        id: 10,
+        title: "Gestor Cultural - Cultural Management Platform",
+        category: "web",
+        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776472/Screenshot_2025-07-17_at_11.46.51_PM_rde9jy.png",
+        description: "Comprehensive cultural management platform for organizing and promoting cultural events and activities.",
+        technologies: ["PHP", "MySQL", "Event Management", "Cultural Platform"],
+        link: "https://gestorcultural.com.br/"
+      },
+      {
+        id: 11,
+        title: "GreenRaise Agro - Agricultural Technology Platform",
+        category: "web",
+        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776472/Screenshot_2025-07-17_at_11.48.47_PM_xs7jiu.png",
+        description: "Agricultural technology platform connecting farmers with modern farming solutions and market opportunities.",
+        technologies: ["React Next.js", "React", "Agricultural Tech", "Marketplace"],
+        link: "https://greenraiseagro.com"
+      },
+      {
+        id: 12,
+        title: "Editais Gestor Cultural - Cultural Notices Management",
+        category: "web",
+        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776471/Screenshot_2025-07-17_at_11.47.42_PM_m0msj7.png",
+        description: "Specialized platform for managing cultural notices, announcements, and regulatory compliance in the cultural sector.",
+        technologies: ["Laravel", "PHP", "Notice Management", "Regulatory Compliance"],
+        link: "https://editais.gestorcultural.com.br/"
+      },
+      {
+        id: 13,
+        title: "Cremson Publications - Academic Publishing Platform",
+        category: "web",
+        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776473/Screenshot_2025-07-17_at_11.49.15_PM_b07mrc.png",
+        description: "Academic publishing platform for research papers, journals, and scholarly publications with peer review system.",
+        technologies: ["WordPress", "Academic Publishing", "Peer Review System", "Content Management"],
+        link: "https://cremsonpublications.com/"
+      },
+      {
+        id: 14,
+        title: "BeaSport - Sports Equipment & Fitness Platform",
+        category: "web",
+        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776473/Screenshot_2025-07-17_at_11.49.33_PM_ywfi2e.png",
+        description: "E-commerce platform for sports equipment, fitness gear, and athletic wear with expert guidance and training programs.",
+        technologies: ["WordPress", "E-commerce", "Sports Equipment", "Fitness Platform"],
+        link: "https://beasport.in/"
+      },
+      {
+        id: 15,
+        title: "Brilliqs - Business Intelligence & Analytics Platform",
+        category: "web",
+        thumbnail: "https://images.pexels.com/photos/5905708/pexels-photo-5905708.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        description: "Business intelligence and analytics platform providing data-driven insights and decision-making tools for enterprises.",
+        technologies: ["WordPress", "Business Intelligence", "Analytics", "Data Visualization"],
+        link: "https://brilliqs.com/"
+      },
+      {
+        id: 16,
+        title: "The Sugar Factory - Confectionery & Dessert Platform",
+        category: "web",
+        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776474/Screenshot_2025-07-17_at_11.50.09_PM_qu4luc.png",
+        description: "E-commerce platform for premium confectionery, desserts, and sweet treats with custom ordering and delivery.",
+        technologies: ["WordPress", "E-commerce", "Confectionery", "Custom Orders"],
+        link: "https://thesugarfactory.in/"
+      },
+      {
+        id: 17,
+        title: "CapShap - Custom Apparel & Fashion Platform",
+        category: "web",
+        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776474/Screenshot_2025-07-17_at_11.50.30_PM_lrqbxn.png",
+        description: "Custom apparel and fashion platform offering personalized clothing, accessories, and design tools.",
+        technologies: ["Shopify", "Custom Apparel", "Design Tools", "E-commerce"],
+        link: "https://capshap.com/"
+      },
+      {
+        id: 18,
+        title: "Senate Realty - Real Estate & Property Management",
+        category: "web",
+        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776473/Screenshot_2025-07-17_at_11.47.59_PM_z87aak.png",
+        description: "Comprehensive real estate platform for property listings, management, and real estate services.",
+        technologies: ["Laravel", "Real Estate", "Property Management", "Virtual Tours"],
+        link: "https://senaterealty.in/home"
+      },
+      {
+        id: 19,
+        title: "Kruti Foods - Food Processing & Distribution Platform",
+        category: "web",
+        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776473/Screenshot_2025-07-17_at_11.48.14_PM_pz4tck.png",
+        description: "Food processing and distribution platform connecting farmers, processors, and consumers in the food supply chain.",
+        technologies: ["Laravel", "Food Processing", "Supply Chain", "Quality Control"],
+        link: "https://krutifoods.com/"
+      },
+      {
+        id: 20,
+        title: "Connect My Designer",
+        category: "web",
+        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746269920/Screenshot_2025-05-03_at_4.28.00_PM_n2xcfg.png",
+        description: "Platform connecting users with designers for customizable sustainable apparel with artist collaborations.",
+        technologies: ["Next.js", "E-commerce", "Customization Tools", "Artist Marketplace", "Sustainable Products"],
+        link: "https://www.connectmydesigner.com/"
+      },
+      {
+        id: 21,
+        title: "PostPatra - Postal Services Platform",
+        category: "web",
+        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746273201/Screenshot_2025-05-03_at_5.22.35_PM_pyyzhk.png",
+        description: "Digital platform for postal and courier services, tracking, and delivery management in India.",
+        technologies: ["Next.js", "Web Development", "Tracking System", "Payment Integration", "User Management"],
+        link: "https://www.postpatra.com/"
+      },
+      {
+        id: 22,
+        title: "Abhi Developers - Real Estate Development Company",
+        category: "web",
+        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776476/Screenshot_2025-07-17_at_11.48.32_PM_xcuare.png",
+        description: "Real estate development company website showcasing projects, properties, and construction services.",
+        technologies: ["Laravel", "Real Estate Development", "Project Management", "Construction Services"],
+        link: "https://abhidevelopers.com/home"
+      },
+    ];
 
-    <!-- Bootstrap & Custom Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-      // Projects data array
-      const projectsData = [
-        {
-          id: 1,
-          title: "MHT CET Cell",
-          category: "web",
-          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746268891/Screenshot_2025-05-03_at_4.11.02_PM_we5gai.png",
-          description: "MHT CET Cell is the official body in Maharashtra that conducts the MHT CET entrance exam for engineering, pharmacy, and other professional courses.",
-          technologies: ["React", "Node.js", "MongoDB", "Assessment Engine"],
-          link: "https://cetcell.mahacet.org/"
-        },
-        {
-          id: 2,
-          title: "MHT CET Mock Test Platform",
-          category: "web",
-          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746269266/Screenshot_2025-05-03_at_4.17.24_PM_epecvc.png",
-          description: "Complete online platform for MHT-CET exam preparation with practice tests, performance analysis and comparative ranking.",
-          technologies: ["PHP","Web Development", "Testing Platform", "Analytics Dashboard", "User Management"],
-          link: "https://www.mhtcetmocktest.com/"
-        },
-        {
-          id: 3,
-          title: "College of Engineering Ambajogai Website",
-          category: "web",
-          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746269633/Screenshot_2025-05-03_at_4.22.55_PM_rtcfao.png",
-          description: "Official website for Mahatma Basaveshwar Education Society's College of Engineering in Ambajogai with program information and student resources.",
-          technologies: ["WordPress", "Responsive Design", "Content Management", "Educational Portal"],
-          link: "https://www.coea.ac.in/"
-        },
-        {
-          id: 4,
-          title: "Einterio - Online Interior Design Platform",
-          category: "web",
-          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746270056/Screenshot_2025-05-03_at_4.30.33_PM_eo9anl.png",
-          description: "Virtual interior design service platform providing 3D design visualization, expert designer collaboration, and furniture recommendations.",
-          technologies: ["3D Visualization", "Designer Marketplace", "E-commerce Integration", "Interior Design Tools"],
-          link: "https://einterio.com/"
-        },
-        {
-          id: 5,
-          title: "MKT78 - Digital Marketing Agency",
-          category: "web",
-          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746270233/Screenshot_2025-05-03_at_4.33.24_PM_c56n7p.png",
-          description: "Website for a digital marketing agency specializing in SEO, content marketing, and online advertising solutions.",
-          technologies: ["WordPress", "Responsive Design", "SEO Optimization", "Content Management"],
-          link: "https://mkt78.com/"
-        },
-        {
-          id: 6,
-          title: "Feofo - E-commerce Feedback Platform",
-          category: "web",
-          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746273298/Screenshot_2025-05-03_at_5.24.26_PM_ex56vk.png",
-          description: "Customer feedback and review management platform for e-commerce businesses and online retailers.",
-          technologies: ["WordPress/PHP", "Analytics Dashboard", "API Integration", "E-commerce Tools"],
-          link: "https://feofo.com/"
-        },
-        {
-          id: 7,
-          title: "Sell My Dyson - Specialized Resale Platform",
-          category: "web",
-          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746273491/Screenshot_2025-05-03_at_5.27.29_PM_c4bqb3.png",
-          description: "Specialized e-commerce platform for buying and selling pre-owned Dyson products in the UK.",
-          technologies: ["E-commerce", "Payment Processing", "Product Management", "Marketplace Tools"],
-          link: "https://sellmydyson.co.uk/"
-        },
-        {
-          id: 8,
-          title: "Sarkari Saathi - Government Services Portal",
-          category: "web",
-          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746273611/Screenshot_2025-05-03_at_5.28.51_PM_zuz7mx.png",
-          description: "Comprehensive portal for accessing government schemes, services, and information for Indian citizens.",
-          technologies: ["HTML", "Search System", "Government APIs", "User Authentication"],
-          link: "https://sarkarisaathi.com/"
-        },
-        {
-          id: 9,
-          title: "management of cultural notices",
-          category: "Web",
-          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746273729/Screenshot_2025-05-03_at_5.31.36_PM_ki6cj8.png",
-          description: "Smart solution for management of cultural notices and implementation of laws to encourage culture",
-          technologies: ["Next.js", "Price Comparison", "Route Optimization", "API Integration", "Travel Technology"],
-          link: "https://0fare.com/"
-        },
-        {
-          id: 10,
-          title: "Gestor Cultural - Cultural Management Platform",
-          category: "web",
-          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776472/Screenshot_2025-07-17_at_11.46.51_PM_rde9jy.png",
-          description: "Comprehensive cultural management platform for organizing and promoting cultural events and activities.",
-          technologies: ["PHP", "MySQL", "Event Management", "Cultural Platform"],
-          link: "https://gestorcultural.com.br/"
-        },
-        {
-          id: 11,
-          title: "GreenRaise Agro - Agricultural Technology Platform",
-          category: "web",
-          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776472/Screenshot_2025-07-17_at_11.48.47_PM_xs7jiu.png",
-          description: "Agricultural technology platform connecting farmers with modern farming solutions and market opportunities.",
-          technologies: ["Next.js", "React", "Agricultural Tech", "Marketplace"],
-          link: "https://greenraiseagro.com"
-        },
-        {
-          id: 12,
-          title: "Editais Gestor Cultural - Cultural Notices Management",
-          category: "web",
-          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776471/Screenshot_2025-07-17_at_11.47.42_PM_m0msj7.png",
-          description: "Specialized platform for managing cultural notices, announcements, and regulatory compliance in the cultural sector.",
-          technologies: ["Laravel", "PHP", "Notice Management", "Regulatory Compliance"],
-          link: "https://editais.gestorcultural.com.br/"
-        },
-        {
-          id: 13,
-          title: "Cremson Publications - Academic Publishing Platform",
-          category: "web",
-          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776473/Screenshot_2025-07-17_at_11.49.15_PM_b07mrc.png",
-          description: "Academic publishing platform for research papers, journals, and scholarly publications with peer review system.",
-          technologies: ["WordPress", "Academic Publishing", "Peer Review System", "Content Management"],
-          link: "https://cremsonpublications.com/"
-        },
-        {
-          id: 14,
-          title: "BeaSport - Sports Equipment & Fitness Platform",
-          category: "web",
-          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776473/Screenshot_2025-07-17_at_11.49.33_PM_ywfi2e.png",
-          description: "E-commerce platform for sports equipment, fitness gear, and athletic wear with expert guidance and training programs.",
-          technologies: ["WordPress", "E-commerce", "Sports Equipment", "Fitness Platform"],
-          link: "https://beasport.in/"
-        },
-        {
-          id: 15,
-          title: "Brilliqs - Business Intelligence & Analytics Platform",
-          category: "web",
-          thumbnail: "https://images.pexels.com/photos/5905708/pexels-photo-5905708.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-          description: "Business intelligence and analytics platform providing data-driven insights and decision-making tools for enterprises.",
-          technologies: ["WordPress", "Business Intelligence", "Analytics", "Data Visualization"],
-          link: "https://brilliqs.com/"
-        },
-        {
-          id: 16,
-          title: "The Sugar Factory - Confectionery & Dessert Platform",
-          category: "web",
-          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776474/Screenshot_2025-07-17_at_11.50.09_PM_qu4luc.png",
-          description: "E-commerce platform for premium confectionery, desserts, and sweet treats with custom ordering and delivery.",
-          technologies: ["WordPress", "E-commerce", "Confectionery", "Custom Orders"],
-          link: "https://thesugarfactory.in/"
-        },
-        {
-          id: 17,
-          title: "CapShap - Custom Apparel & Fashion Platform",
-          category: "web",
-          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776474/Screenshot_2025-07-17_at_11.50.30_PM_lrqbxn.png",
-          description: "Custom apparel and fashion platform offering personalized clothing, accessories, and design tools.",
-          technologies: ["Shopify", "Custom Apparel", "Design Tools", "E-commerce"],
-          link: "https://capshap.com/"
-        },
-        {
-          id: 18,
-          title: "Senate Realty - Real Estate & Property Management",
-          category: "web",
-          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776473/Screenshot_2025-07-17_at_11.47.59_PM_z87aak.png",
-          description: "Comprehensive real estate platform for property listings, management, and real estate services.",
-          technologies: ["Laravel", "Real Estate", "Property Management", "Virtual Tours"],
-          link: "https://senaterealty.in/home"
-        },
-        {
-          id: 19,
-          title: "Kruti Foods - Food Processing & Distribution Platform",
-          category: "web",
-          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776473/Screenshot_2025-07-17_at_11.48.14_PM_pz4tck.png",
-          description: "Food processing and distribution platform connecting farmers, processors, and consumers in the food supply chain.",
-          technologies: ["Laravel", "Food Processing", "Supply Chain", "Quality Control"],
-          link: "https://krutifoods.com/"
-        },
-        {
-          id: 20,
-          title: "Connect My Designer",
-          category: "web",
-          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746269920/Screenshot_2025-05-03_at_4.28.00_PM_n2xcfg.png",
-          description: "Platform connecting users with designers for customizable sustainable apparel with artist collaborations.",
-          technologies: ["React.js","E-commerce", "Customization Tools", "Artist Marketplace", "Sustainable Products"],
-          link: "https://www.connectmydesigner.com/"
-        },
-        {
-          id: 21,
-          title: "PostPatra - Postal Services Platform",
-          category: "web",
-          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746273201/Screenshot_2025-05-03_at_5.22.35_PM_pyyzhk.png",
-          description: "Digital platform for postal and courier services, tracking, and delivery management in India.",
-          technologies: ["React.js","Web Development", "Tracking System", "Payment Integration", "User Management"],
-          link: "https://www.postpatra.com/"
-        },
-        {
-          id: 22,
-          title: "Abhi Developers - Real Estate Development Company",
-          category: "web",
-          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776476/Screenshot_2025-07-17_at_11.48.32_PM_xcuare.png",
-          description: "Real estate development company website showcasing projects, properties, and construction services.",
-          technologies: ["Laravel", "Real Estate Development", "Project Management", "Construction Services"],
-          link: "https://abhidevelopers.com/home"
-        },
-      ];
+    // DOM Elements
+    const projectsList = document.getElementById('projects-list');
+    const projectDetails = document.getElementById('project-details');
+    const projectContent = document.querySelector('.project-content');
+    const backButton = document.getElementById('back-button');
+    const filterButtons = document.querySelectorAll('.btn-filter');
 
-      // DOM Elements
-      const projectsList = document.getElementById('projects-list');
-      const projectDetails = document.getElementById('project-details');
-      const projectContent = document.querySelector('.project-content');
-      const backButton = document.getElementById('back-button');
-      const filterButtons = document.querySelectorAll('.btn-filter');
+    // Initialize the application
+    document.addEventListener('DOMContentLoaded', () => {
+      renderProjects('all');
+      setupEventListeners();
+    });
 
-      // Initialize the application
-      document.addEventListener('DOMContentLoaded', () => {
-        renderProjects('all');
-        setupEventListeners();
+    // Setup Event Listeners
+    function setupEventListeners() {
+      // Filter buttons
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const filter = button.getAttribute('data-filter');
+
+          // Update active state
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+
+          // Render filtered projects
+          renderProjects(filter);
+        });
       });
 
-      // Setup Event Listeners
-      function setupEventListeners() {
-        // Filter buttons
-        filterButtons.forEach(button => {
-          button.addEventListener('click', () => {
-            const filter = button.getAttribute('data-filter');
-            
-            // Update active state
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            
-            // Render filtered projects
-            renderProjects(filter);
-          });
-        });
+      // Back button
+      backButton.addEventListener('click', showProjectsList);
+    }
 
-        // Back button
-        backButton.addEventListener('click', showProjectsList);
-      }
+    // Render Projects
+    function renderProjects(filter) {
+      projectsList.innerHTML = '';
 
-      // Render Projects
-      function renderProjects(filter) {
-        projectsList.innerHTML = '';
-        
-        let filteredProjects = filter === 'all' 
-          ? projectsData 
-          : projectsData.filter(project => project.category === filter);
-        
-        // Sort projects by tech stack priority
-        filteredProjects.sort((a, b) => {
-          const techA = a.technologies[0]?.toLowerCase() || '';
-          const techB = b.technologies[0]?.toLowerCase() || '';
-          
-          // Priority order: React > Laravel/PHP > Next.js > WordPress > Others
-          const getPriority = (tech) => {
-            if (tech.includes('react')) return 1;
-            if (tech.includes('laravel') || tech.includes('php')) return 2;
-            if (tech.includes('next.js') || tech.includes('nextjs')) return 3;
-            if (tech.includes('wordpress') || tech.includes('wp')) return 4;
-            return 5; // Others
-          };
-          
-          return getPriority(techA) - getPriority(techB);
-        });
-        
-        filteredProjects.forEach(project => {
-          const projectCard = createProjectCard(project);
-          projectsList.appendChild(projectCard);
-        });
+      let filteredProjects = filter === 'all'
+        ? projectsData
+        : projectsData.filter(project => project.category === filter);
 
-        // Add animation
-        const projectCards = document.querySelectorAll('.project-card');
-        projectCards.forEach((card, index) => {
-          setTimeout(() => {
-            card.classList.add('fade-in');
-          }, index * 100);
-        });
-      }
+      // Sort projects by tech stack priority
+      filteredProjects.sort((a, b) => {
+        const techA = a.technologies[0]?.toLowerCase() || '';
+        const techB = b.technologies[0]?.toLowerCase() || '';
 
-      // Create Project Card
-      function createProjectCard(project) {
-        const col = document.createElement('div');
-        col.className = 'col-sm-6 col-lg-4 mb-4';
+        // Priority order: React > Laravel/PHP > Next.js > WordPress > Others
+        const getPriority = (tech) => {
+          if (tech.includes('react')) return 1;
+          if (tech.includes('laravel') || tech.includes('php')) return 2;
+          if (tech.includes('next.js') || tech.includes('nextjs')) return 3;
+          if (tech.includes('wordpress') || tech.includes('wp')) return 4;
+          return 5; // Others
+        };
 
-        // Get the main tech stack from technologies array
-        const mainTech = project.technologies[0] || 'Web Development';
+        return getPriority(techA) - getPriority(techB);
+      });
 
-        col.innerHTML = `
+      filteredProjects.forEach(project => {
+        const projectCard = createProjectCard(project);
+        projectsList.appendChild(projectCard);
+      });
+
+      // Add animation
+      const projectCards = document.querySelectorAll('.project-card');
+      projectCards.forEach((card, index) => {
+        setTimeout(() => {
+          card.classList.add('fade-in');
+        }, index * 100);
+      });
+    }
+
+    // Create Project Card
+    function createProjectCard(project) {
+      const col = document.createElement('div');
+      col.className = 'col-sm-6 col-lg-4 mb-4';
+
+      // Get the main tech stack from technologies array
+      const mainTech = project.technologies[0] || 'Web Development';
+
+      col.innerHTML = `
           <div class="project-card" data-id="${project.id}">
             <div class="project-card-image" style="background-image: url('${project.thumbnail}')"></div>
             <div class="project-card-body">
@@ -623,21 +644,21 @@
           </div>
         `;
 
-        return col;
-      }
+      return col;
+    }
 
-      // Show Project Details
-      function showProjectDetails(projectId) {
-        const project = projectsData.find(p => p.id === projectId);
-        
-        if (!project) return;
-        
-        // Update page title
-        document.getElementById('page-title').textContent = project.title;
-        document.getElementById('page-subtitle').textContent = `${project.category} project - ${project.year}`;
-        
-        // Create project details HTML
-        projectContent.innerHTML = `
+    // Show Project Details
+    function showProjectDetails(projectId) {
+      const project = projectsData.find(p => p.id === projectId);
+
+      if (!project) return;
+
+      // Update page title
+      document.getElementById('page-title').textContent = project.title;
+      document.getElementById('page-subtitle').textContent = `${project.category} project - ${project.year}`;
+
+      // Create project details HTML
+      projectContent.innerHTML = `
           <div class="project-hero" style="background-image: url('${project.thumbnail}')"></div>
           <h1 class="display-5 fw-bold mb-4">${project.title}</h1>
           <p class="lead mb-4">${project.fullDescription}</p>
@@ -660,39 +681,40 @@
           
          
         `;
-        // <h3 class="h4 mt-5 mb-4">Project Gallery</h3>
-        //   <div class="project-gallery">
-        //     ${project.gallery.map(image => `
-        //       <div class="gallery-image">
-        //         <img src="${image}" alt="${project.title}">
-        //       </div>
-        //     `).join('')}
-        //   </div>
-        // Hide projects list, show details
-        projectsList.classList.add('fade-out');
+      // <h3 class="h4 mt-5 mb-4">Project Gallery</h3>
+      //   <div class="project-gallery">
+      //     ${project.gallery.map(image => `
+      //       <div class="gallery-image">
+      //         <img src="${image}" alt="${project.title}">
+      //       </div>
+      //     `).join('')}
+      //   </div>
+      // Hide projects list, show details
+      projectsList.classList.add('fade-out');
+      setTimeout(() => {
+        projectsList.classList.add('d-none');
+        projectDetails.classList.remove('d-none');
         setTimeout(() => {
-          projectsList.classList.add('d-none');
-          projectDetails.classList.remove('d-none');
-          setTimeout(() => {
-            projectDetails.classList.add('visible');
-          }, 50);
-        }, 300);
-      }
+          projectDetails.classList.add('visible');
+        }, 50);
+      }, 300);
+    }
 
-      // Show Projects List
-      function showProjectsList() {
-        // Reset page title
-        document.getElementById('page-title').textContent = 'My Projects';
-        document.getElementById('page-subtitle').textContent = 'A showcase of my recent work and expertise';
-        
-        // Hide details, show list
-        projectDetails.classList.remove('visible');
-        setTimeout(() => {
-          projectDetails.classList.add('d-none');
-          projectsList.classList.remove('d-none');
-          projectsList.classList.remove('fade-out');
-        }, 300);
-      }
-    </script>
-  </body>
+    // Show Projects List
+    function showProjectsList() {
+      // Reset page title
+      document.getElementById('page-title').textContent = 'My Projects';
+      document.getElementById('page-subtitle').textContent = 'A showcase of my recent work and expertise';
+
+      // Hide details, show list
+      projectDetails.classList.remove('visible');
+      setTimeout(() => {
+        projectDetails.classList.add('d-none');
+        projectsList.classList.remove('d-none');
+        projectsList.classList.remove('fade-out');
+      }, 300);
+    }
+  </script>
+</body>
+
 </html>
