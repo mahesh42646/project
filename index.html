@@ -140,6 +140,40 @@
         color: var(--error);
       }
 
+      .tech-stack {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        margin-right: 0.5rem;
+        background-color: rgba(0, 102, 204, 0.1);
+        color: var(--primary);
+      }
+
+      .btn-visit {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background-color: var(--primary);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: all var(--transition-fast) ease;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn-visit:hover {
+        background-color: var(--primary-dark);
+        color: white;
+        transform: translateY(-2px);
+      }
+
       /* Project Details */
       .project-details {
         opacity: 0;
@@ -250,8 +284,8 @@
             <!-- <div class="col-md-6">
             
               <p class="lead" id="page-subtitle">A showcase of my recent work and expertise</p>
-            </div> -->
-            <!-- <div class="col-md- text-md-center">
+            </div>
+            <div class="col-md- text-md-center">
               <div class="filters" id="project-filters">
                 <button class="btn btn-filter active" data-filter="all">All</button>
                 <button class="btn btn-filter" data-filter="web">Web</button>
@@ -295,231 +329,201 @@
       const projectsData = [
         {
           id: 1,
-          title: "Rasha - Women's Health & Wellness Products",
-          category: "web",
-          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746268729/Screenshot_2025-05-03_at_4.07.54_PM_ihfxmi.png",
-          image: "https://images.pexels.com/photos/5077047/pexels-photo-5077047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-          description: "E-commerce platform for women's health supplements and wellness products with product management and payment integration.",
-          fullDescription: "Built a comprehensive e-commerce platform for Rasha, a women's health and wellness brand offering supplements crafted specifically for women. The website includes robust product management, shopping cart functionality, and seamless payment gateway integration. Features categories for gut health, detox, fitness, hydration, skin & hair products.",
-          technologies: ["Shopify", "E-commerce", "Payment Integration", "Responsive Design"],
-          client: "Rasha",
-          duration: "4 months",
-          year: "2024",
-          link: "https://www.myrasha.com/",
-          gallery: [
-            "https://images.pexels.com/photos/5077047/pexels-photo-5077047.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "https://images.pexels.com/photos/5082579/pexels-photo-5082579.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          ]
-        },
-        {
-          id: 2,
           title: "MHT CET Cell",
           category: "web",
           thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746268891/Screenshot_2025-05-03_at_4.11.02_PM_we5gai.png",
-          image: "https://images.pexels.com/photos/4498362/pexels-photo-4498362.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
           description: "MHT CET Cell is the official body in Maharashtra that conducts the MHT CET entrance exam for engineering, pharmacy, and other professional courses.",
-          fullDescription: "Developed the CET-ATAL (Assessment, Tests and Learning) platform for the Maharashtra State CET Cell to help candidates prepare for professional course entrance exams. The platform provides mock tests that simulate the real exam environment and psychometric tests to help students identify their ideal career paths.",
           technologies: ["React", "Node.js", "MongoDB", "Assessment Engine"],
-          client: "Maharashtra State Common Entrance Cell",
-          duration: "6 months",
-          year: "2023",
-          link: "https://cetcell.mahacet.org/",
-          gallery: [
-            "https://images.pexels.com/photos/4498362/pexels-photo-4498362.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "https://images.pexels.com/photos/4498603/pexels-photo-4498603.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "https://images.pexels.com/photos/4498148/pexels-photo-4498148.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          ]
+          link: "https://cetcell.mahacet.org/"
         },
         {
-          id: 3,
+          id: 2,
           title: "MHT CET Mock Test Platform",
           category: "web",
           thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746269266/Screenshot_2025-05-03_at_4.17.24_PM_epecvc.png",
-          image: "https://images.pexels.com/photos/5537585/pexels-photo-5537585.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
           description: "Complete online platform for MHT-CET exam preparation with practice tests, performance analysis and comparative ranking.",
-          fullDescription: "Created a dedicated practice platform for MHT-CET engineering, pharmacy and agriculture entrance exam preparation. The system features mock tests aligned with the latest syllabus, detailed performance analysis, question-wise time utilization data, and comparative ranking against other test takers.",
-          technologies: ["Web Development", "Testing Platform", "Analytics Dashboard", "User Management"],
-          client: "MHT CET Preparation",
-          duration: "3 months",
-          year: "2023",
-          link: "https://www.mhtcetmocktest.com/",
-          gallery: [
-            "https://images.pexels.com/photos/5537585/pexels-photo-5537585.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "https://images.pexels.com/photos/5849592/pexels-photo-5849592.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "https://images.pexels.com/photos/5538597/pexels-photo-5538597.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          ]
+          technologies: ["PHP","Web Development", "Testing Platform", "Analytics Dashboard", "User Management"],
+          link: "https://www.mhtcetmocktest.com/"
         },
         {
-          id: 4,
+          id: 3,
           title: "College of Engineering Ambajogai Website",
           category: "web",
           thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746269633/Screenshot_2025-05-03_at_4.22.55_PM_rtcfao.png",
-          image: "https://images.pexels.com/photos/3937174/pexels-photo-3937174.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
           description: "Official website for Mahatma Basaveshwar Education Society's College of Engineering in Ambajogai with program information and student resources.",
-          fullDescription: "Designed and developed the official website for College of Engineering, Ambajogai. The website highlights the institution's programs, facilities, and student resources. It includes information about undergraduate and postgraduate engineering programs, faculty details, campus facilities, and admission procedures.",
           technologies: ["WordPress", "Responsive Design", "Content Management", "Educational Portal"],
-          client: "College of Engineering, Ambajogai",
-          duration: "5 months",
-          year: "2024",
-          link: "https://www.coea.ac.in/",
-          gallery: [
-            "https://images.pexels.com/photos/3937174/pexels-photo-3937174.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "https://images.pexels.com/photos/4221775/pexels-photo-4221775.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "https://images.pexels.com/photos/4219103/pexels-photo-4219103.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          ]
+          link: "https://www.coea.ac.in/"
         },
         {
-          id: 5,
-          title: "Connect My Designer",
-          category: "web",
-          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746269920/Screenshot_2025-05-03_at_4.28.00_PM_n2xcfg.png",
-          image: "https://images.pexels.com/photos/3935702/pexels-photo-3935702.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-          description: "Platform connecting users with designers for customizable sustainable apparel with artist collaborations.",
-          fullDescription: "Built a platform that connects users with designers for customizable sustainable apparel. The platform allows users to express themselves by adding their own text, artwork, and photos to create personalized clothing items. It also features work from international artists and promotes sustainable, ethically-sourced materials.",
-          technologies: ["E-commerce", "Customization Tools", "Artist Marketplace", "Sustainable Products"],
-          client: "Connect One Design",
-          duration: "7 months",
-          year: "2023",
-          link: "https://www.connectmydesigner.com/",
-          gallery: [
-            "https://images.pexels.com/photos/3935702/pexels-photo-3935702.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "https://images.pexels.com/photos/4353813/pexels-photo-4353813.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "https://images.pexels.com/photos/4386426/pexels-photo-4386426.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          ]
-        },
-        {
-          id: 6,
+          id: 4,
           title: "Einterio - Online Interior Design Platform",
           category: "web",
           thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746270056/Screenshot_2025-05-03_at_4.30.33_PM_eo9anl.png",
-          image: "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
           description: "Virtual interior design service platform providing 3D design visualization, expert designer collaboration, and furniture recommendations.",
-          fullDescription: "Developed Einterio, India's first online interior design platform that connects users with professional designers. The service offers 3D design visualization, expert designer collaboration, and curated furniture recommendations. Users can transform their spaces virtually before making actual changes, all at an affordable price compared to traditional interior design services.",
           technologies: ["3D Visualization", "Designer Marketplace", "E-commerce Integration", "Interior Design Tools"],
-          client: "Einterio (Entriore Design LLP)",
-          duration: "6 months",
-          year: "2024",
-          link: "https://einterio.com/",
-          gallery: [
-            "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "https://images.pexels.com/photos/4347366/pexels-photo-4347366.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "https://images.pexels.com/photos/7978827/pexels-photo-7978827.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          ]
+          link: "https://einterio.com/"
         },
         {
-          id: 7,
+          id: 5,
           title: "MKT78 - Digital Marketing Agency",
           category: "web",
           thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746270233/Screenshot_2025-05-03_at_4.33.24_PM_c56n7p.png",
-          image: "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
           description: "Website for a digital marketing agency specializing in SEO, content marketing, and online advertising solutions.",
-          fullDescription: "Developed a professional website for MKT78, a digital marketing agency that helps businesses grow through search engine optimization, content marketing, and targeted online advertising campaigns. The site showcases their services, case studies, and client testimonials with a clean, modern design.",
           technologies: ["WordPress", "Responsive Design", "SEO Optimization", "Content Management"],
-          client: "MKT78 Digital Marketing",
-          duration: "2 months",
-          year: "2024",
-          link: "https://mkt78.com/",
-          gallery: [
-            "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "https://images.pexels.com/photos/4347366/pexels-photo-4347366.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "https://images.pexels.com/photos/7978827/pexels-photo-7978827.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          ]
+          link: "https://mkt78.com/"
         },
         {
-          id: 8,
-          title: "PostPatra - Postal Services Platform",
-          category: "web",
-          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746273201/Screenshot_2025-05-03_at_5.22.35_PM_pyyzhk.png",
-          image: "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-          description: "Digital platform for postal and courier services, tracking, and delivery management in India.",
-          fullDescription: "Built PostPatra, a comprehensive digital platform for postal and courier services in India. The platform enables users to track packages, schedule pickups, manage deliveries, and access various postal services online. Features a user-friendly interface with real-time tracking capabilities.",
-          technologies: ["Web Development", "Tracking System", "Payment Integration", "User Management"],
-          client: "PostPatra Services",
-          duration: "3 months",
-          year: "2024",
-          link: "https://www.postpatra.com/",
-          gallery: [
-            "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "https://images.pexels.com/photos/4347366/pexels-photo-4347366.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "https://images.pexels.com/photos/7978827/pexels-photo-7978827.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          ]
-        },
-        {
-          id: 9,
+          id: 6,
           title: "Feofo - E-commerce Feedback Platform",
           category: "web",
           thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746273298/Screenshot_2025-05-03_at_5.24.26_PM_ex56vk.png",
-          image: "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
           description: "Customer feedback and review management platform for e-commerce businesses and online retailers.",
-          fullDescription: "Developed Feofo, an integrated feedback platform for e-commerce businesses that collects, analyzes, and displays customer reviews. The platform helps online retailers build trust with potential customers by showcasing verified reviews and ratings, improving conversion rates and customer satisfaction.",
-          technologies: ["Review System", "Analytics Dashboard", "API Integration", "E-commerce Tools"],
-          client: "Feofo Solutions",
-          duration: "4 months",
-          year: "2024",
-          link: "https://feofo.com/",
-          gallery: [
-            "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "https://images.pexels.com/photos/4347366/pexels-photo-4347366.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "https://images.pexels.com/photos/7978827/pexels-photo-7978827.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          ]
+          technologies: ["WordPress/PHP", "Analytics Dashboard", "API Integration", "E-commerce Tools"],
+          link: "https://feofo.com/"
         },
         {
-          id: 10,
+          id: 7,
           title: "Sell My Dyson - Specialized Resale Platform",
           category: "web",
           thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746273491/Screenshot_2025-05-03_at_5.27.29_PM_c4bqb3.png",
-          image: "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
           description: "Specialized e-commerce platform for buying and selling pre-owned Dyson products in the UK.",
-          fullDescription: "Created a niche e-commerce platform dedicated to buying and selling pre-owned Dyson products in the UK. The website features product listing capabilities, condition assessments, pricing tools, and secure payment processing. The platform helps extend the lifecycle of quality Dyson products while offering users fair pricing.",
           technologies: ["E-commerce", "Payment Processing", "Product Management", "Marketplace Tools"],
-          client: "Sell My Dyson UK",
-          duration: "3 months",
-          year: "2024",
-          link: "https://sellmydyson.co.uk/",
-          gallery: [
-            "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "https://images.pexels.com/photos/4347366/pexels-photo-4347366.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "https://images.pexels.com/photos/7978827/pexels-photo-7978827.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          ]
+          link: "https://sellmydyson.co.uk/"
         },
         {
-          id: 11,
+          id: 8,
           title: "Sarkari Saathi - Government Services Portal",
           category: "web",
           thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746273611/Screenshot_2025-05-03_at_5.28.51_PM_zuz7mx.png",
-          image: "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
           description: "Comprehensive portal for accessing government schemes, services, and information for Indian citizens.",
-          fullDescription: "Developed Sarkari Saathi, a comprehensive platform that simplifies access to government schemes, services, and information for Indian citizens. The portal aggregates data from various government departments, provides application guidance for welfare programs, and delivers updates on job opportunities, exam notifications, and important deadlines.",
-          technologies: ["Information Portal", "Search System", "Government APIs", "User Authentication"],
-          client: "Sarkari Saathi Services",
-          duration: "5 months",
-          year: "2024",
-          link: "https://sarkarisaathi.com/",
-          gallery: [
-            "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "https://images.pexels.com/photos/4347366/pexels-photo-4347366.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "https://images.pexels.com/photos/7978827/pexels-photo-7978827.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          ]
+          technologies: ["HTML", "Search System", "Government APIs", "User Authentication"],
+          link: "https://sarkarisaathi.com/"
+        },
+        {
+          id: 9,
+          title: "management of cultural notices",
+          category: "Web",
+          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746273729/Screenshot_2025-05-03_at_5.31.36_PM_ki6cj8.png",
+          description: "Smart solution for management of cultural notices and implementation of laws to encourage culture",
+          technologies: ["Next.js", "Price Comparison", "Route Optimization", "API Integration", "Travel Technology"],
+          link: "https://0fare.com/"
+        },
+        {
+          id: 10,
+          title: "Gestor Cultural - Cultural Management Platform",
+          category: "web",
+          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776472/Screenshot_2025-07-17_at_11.46.51_PM_rde9jy.png",
+          description: "Comprehensive cultural management platform for organizing and promoting cultural events and activities.",
+          technologies: ["PHP", "MySQL", "Event Management", "Cultural Platform"],
+          link: "https://gestorcultural.com.br/"
+        },
+        {
+          id: 11,
+          title: "GreenRaise Agro - Agricultural Technology Platform",
+          category: "web",
+          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776472/Screenshot_2025-07-17_at_11.48.47_PM_xs7jiu.png",
+          description: "Agricultural technology platform connecting farmers with modern farming solutions and market opportunities.",
+          technologies: ["Next.js", "React", "Agricultural Tech", "Marketplace"],
+          link: "https://greenraiseagro.com"
         },
         {
           id: 12,
-          title: "management of cultural notices",
+          title: "Editais Gestor Cultural - Cultural Notices Management",
           category: "web",
-          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746273729/Screenshot_2025-05-03_at_5.31.36_PM_ki6cj8.png",
-          image: "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-          description: "Smart solution for management of cultural notices and implementation of laws to encourage culture",
-          fullDescription: "Built 0Fare, an innovative travel fare aggregator and comparison platform that helps users find the most cost-effective transportation options. The system analyzes data from multiple providers to suggest optimal routes, timing, and booking strategies, potentially reducing travel costs significantly while maintaining quality and convenience.",
-          technologies: ["Price Comparison", "Route Optimization", "API Integration", "Travel Technology"],
-          client: "0Fare Travel Solutions",
-          duration: "4 months",
-          year: "2024",
-          link: "https://0fare.com/",
-          gallery: [
-            "https://images.pexels.com/photos/7180857/pexels-photo-7180857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "https://images.pexels.com/photos/4347366/pexels-photo-4347366.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "https://images.pexels.com/photos/7978827/pexels-photo-7978827.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          ]
+          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776471/Screenshot_2025-07-17_at_11.47.42_PM_m0msj7.png",
+          description: "Specialized platform for managing cultural notices, announcements, and regulatory compliance in the cultural sector.",
+          technologies: ["Laravel", "PHP", "Notice Management", "Regulatory Compliance"],
+          link: "https://editais.gestorcultural.com.br/"
+        },
+        {
+          id: 13,
+          title: "Cremson Publications - Academic Publishing Platform",
+          category: "web",
+          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776473/Screenshot_2025-07-17_at_11.49.15_PM_b07mrc.png",
+          description: "Academic publishing platform for research papers, journals, and scholarly publications with peer review system.",
+          technologies: ["WordPress", "Academic Publishing", "Peer Review System", "Content Management"],
+          link: "https://cremsonpublications.com/"
+        },
+        {
+          id: 14,
+          title: "BeaSport - Sports Equipment & Fitness Platform",
+          category: "web",
+          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776473/Screenshot_2025-07-17_at_11.49.33_PM_ywfi2e.png",
+          description: "E-commerce platform for sports equipment, fitness gear, and athletic wear with expert guidance and training programs.",
+          technologies: ["WordPress", "E-commerce", "Sports Equipment", "Fitness Platform"],
+          link: "https://beasport.in/"
+        },
+        {
+          id: 15,
+          title: "Brilliqs - Business Intelligence & Analytics Platform",
+          category: "web",
+          thumbnail: "https://images.pexels.com/photos/5905708/pexels-photo-5905708.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          description: "Business intelligence and analytics platform providing data-driven insights and decision-making tools for enterprises.",
+          technologies: ["WordPress", "Business Intelligence", "Analytics", "Data Visualization"],
+          link: "https://brilliqs.com/"
+        },
+        {
+          id: 16,
+          title: "The Sugar Factory - Confectionery & Dessert Platform",
+          category: "web",
+          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776474/Screenshot_2025-07-17_at_11.50.09_PM_qu4luc.png",
+          description: "E-commerce platform for premium confectionery, desserts, and sweet treats with custom ordering and delivery.",
+          technologies: ["WordPress", "E-commerce", "Confectionery", "Custom Orders"],
+          link: "https://thesugarfactory.in/"
+        },
+        {
+          id: 17,
+          title: "CapShap - Custom Apparel & Fashion Platform",
+          category: "web",
+          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776474/Screenshot_2025-07-17_at_11.50.30_PM_lrqbxn.png",
+          description: "Custom apparel and fashion platform offering personalized clothing, accessories, and design tools.",
+          technologies: ["Shopify", "Custom Apparel", "Design Tools", "E-commerce"],
+          link: "https://capshap.com/"
+        },
+        {
+          id: 18,
+          title: "Senate Realty - Real Estate & Property Management",
+          category: "web",
+          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776473/Screenshot_2025-07-17_at_11.47.59_PM_z87aak.png",
+          description: "Comprehensive real estate platform for property listings, management, and real estate services.",
+          technologies: ["Laravel", "Real Estate", "Property Management", "Virtual Tours"],
+          link: "https://senaterealty.in/home"
+        },
+        {
+          id: 19,
+          title: "Kruti Foods - Food Processing & Distribution Platform",
+          category: "web",
+          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776473/Screenshot_2025-07-17_at_11.48.14_PM_pz4tck.png",
+          description: "Food processing and distribution platform connecting farmers, processors, and consumers in the food supply chain.",
+          technologies: ["Laravel", "Food Processing", "Supply Chain", "Quality Control"],
+          link: "https://krutifoods.com/"
+        },
+        {
+          id: 20,
+          title: "Connect My Designer",
+          category: "web",
+          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746269920/Screenshot_2025-05-03_at_4.28.00_PM_n2xcfg.png",
+          description: "Platform connecting users with designers for customizable sustainable apparel with artist collaborations.",
+          technologies: ["React.js","E-commerce", "Customization Tools", "Artist Marketplace", "Sustainable Products"],
+          link: "https://www.connectmydesigner.com/"
+        },
+        {
+          id: 21,
+          title: "PostPatra - Postal Services Platform",
+          category: "web",
+          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746273201/Screenshot_2025-05-03_at_5.22.35_PM_pyyzhk.png",
+          description: "Digital platform for postal and courier services, tracking, and delivery management in India.",
+          technologies: ["React.js","Web Development", "Tracking System", "Payment Integration", "User Management"],
+          link: "https://www.postpatra.com/"
+        },
+        {
+          id: 22,
+          title: "Abhi Developers - Real Estate Development Company",
+          category: "web",
+          thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776476/Screenshot_2025-07-17_at_11.48.32_PM_xcuare.png",
+          description: "Real estate development company website showcasing projects, properties, and construction services.",
+          technologies: ["Laravel", "Real Estate Development", "Project Management", "Construction Services"],
+          link: "https://abhidevelopers.com/home"
         },
       ];
 
@@ -560,9 +564,26 @@
       function renderProjects(filter) {
         projectsList.innerHTML = '';
         
-        const filteredProjects = filter === 'all' 
+        let filteredProjects = filter === 'all' 
           ? projectsData 
           : projectsData.filter(project => project.category === filter);
+        
+        // Sort projects by tech stack priority
+        filteredProjects.sort((a, b) => {
+          const techA = a.technologies[0]?.toLowerCase() || '';
+          const techB = b.technologies[0]?.toLowerCase() || '';
+          
+          // Priority order: React > Laravel/PHP > Next.js > WordPress > Others
+          const getPriority = (tech) => {
+            if (tech.includes('react')) return 1;
+            if (tech.includes('laravel') || tech.includes('php')) return 2;
+            if (tech.includes('next.js') || tech.includes('nextjs')) return 3;
+            if (tech.includes('wordpress') || tech.includes('wp')) return 4;
+            return 5; // Others
+          };
+          
+          return getPriority(techA) - getPriority(techB);
+        });
         
         filteredProjects.forEach(project => {
           const projectCard = createProjectCard(project);
@@ -583,21 +604,24 @@
         const col = document.createElement('div');
         col.className = 'col-sm-6 col-lg-4 mb-4';
 
+        // Get the main tech stack from technologies array
+        const mainTech = project.technologies[0] || 'Web Development';
+
         col.innerHTML = `
-          <div class="project-card " data-id="${project.id}">
+          <div class="project-card" data-id="${project.id}">
             <div class="project-card-image" style="background-image: url('${project.thumbnail}')"></div>
             <div class="project-card-body">
+              <span class="tech-stack">${mainTech}</span>
               <span class="project-category ${project.category}">${project.category}</span>
               <h3 class="h5 mb-2">${project.title}</h3>
               <p class="text-muted">${project.description}</p>
+              <button class="btn-visit" onclick="window.open('${project.link}', '_blank')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Visit Site
+              </button>
             </div>
           </div>
         `;
-
-        // Add click event to open project link in new tab
-        col.querySelector('.project-card').addEventListener('click', () => {
-          window.open(project.link, '_blank');
-        });
 
         return col;
       }
