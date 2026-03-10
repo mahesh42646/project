@@ -1,720 +1,2174 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
 
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Projects Portfolio</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #0066CC;
-      --primary-light: #4D94FF;
-      --primary-dark: #004C99;
-      --secondary: #6C757D;
-      --accent: #FF9500;
-      --success: #28A745;
-      --warning: #FFC107;
-      --error: #DC3545;
-      --neutral-100: #F8F9FA;
-      --neutral-200: #E9ECEF;
-      --neutral-300: #DEE2E6;
-      --neutral-400: #CED4DA;
-      --neutral-500: #ADB5BD;
-      --neutral-600: #6C757D;
-      --neutral-700: #495057;
-      --neutral-800: #343A40;
-      --neutral-900: #212529;
-      --font-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      --transition-fast: 0.2s;
-      --transition-medium: 0.3s;
-      --transition-slow: 0.5s;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FEOFO — Digital & IT Agency</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Syne:wght@400;600;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+    <style>
+        :root {
+            --neon-cyan: #3810FF;
+            --neon-magenta: #6951e0;
+            --neon-gold: #b346f3;
+            --deep-black: #020408;
+            --glass-bg: rgba(255, 255, 255, 0.04);
+            --glass-border: rgba(0, 245, 255, 0.15);
+            /* Semantic theme vars (dark default) */
+            --page-bg: #020408;
+            --page-text: #e8f4ff;
+            --page-text-muted: #8899aa;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(0, 245, 255, 0.08);
+            --nav-scrolled-bg: rgba(2, 4, 8, 0.85);
+            --footer-bg: rgba(0, 0, 0, 0.5);
+            --input-border: rgba(0, 245, 255, 0.2);
+            --grid-line: rgba(0, 245, 255, 0.03);
+            --orb-opacity: 0.12;
+            --starfield-opacity: 1;
+            --noise-opacity: 0.4;
+        }
 
-    body {
-      font-family: var(--font-primary);
-      color: var(--neutral-800);
-      background-color: var(--neutral-100);
-      line-height: 1.5;
-    }
+        [data-theme="light"] {
+            --page-bg: #f0f4f8;
+            --page-text: #1a202c;
+            --page-text-muted: #4a5568;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --card-border: rgba(56, 16, 255, 0.12);
+            --nav-scrolled-bg: rgba(240, 244, 248, 0.92);
+            --footer-bg: rgba(255, 255, 255, 0.9);
+            --input-border: rgba(56, 16, 255, 0.2);
+            --grid-line: rgba(56, 16, 255, 0.06);
+            --orb-opacity: 0.06;
+            --starfield-opacity: 0.15;
+            --noise-opacity: 0.15;
+        }
+        [data-theme="light"] .feature-banner {
+            background: linear-gradient(135deg, rgba(56, 16, 255, 0.04), rgba(105, 81, 224, 0.04));
+            border-color: rgba(56, 16, 255, 0.12);
+        }
+        [data-theme="light"] .contact-section {
+            background: linear-gradient(135deg, rgba(56, 16, 255, 0.03), rgba(105, 81, 224, 0.03));
+            border-color: rgba(56, 16, 255, 0.08);
+        }
+        [data-theme="light"] .founder-card {
+            background: linear-gradient(135deg, rgba(56, 16, 255, 0.06), rgba(105, 81, 224, 0.06));
+            border-color: rgba(56, 16, 255, 0.15);
+        }
+        [data-theme="light"] .mobile-menu {
+            background: rgba(240, 244, 248, 0.98);
+        }
+        [data-theme="light"] .animated-border-inner {
+            background: var(--page-bg);
+        }
 
-    .header {
-      background-color: var(--primary);
-      color: white;
-      position: relative;
-      overflow: hidden;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .header::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      right: 0;
-      height: 20px;
-      background-color: var(--neutral-100);
-      border-radius: 50% 50% 0 0;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    /* Buttons & Filters */
-    .btn-filter {
-      border: none;
-      background-color: transparent;
-      color: white;
-      margin-left: 0.5rem;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-weight: 500;
-      transition: all var(--transition-fast) ease;
-    }
+        body {
+            background: var(--page-bg);
+            color: var(--page-text);
+            font-family: 'Syne', sans-serif;
+            overflow-x: hidden;
+            transition: background 0.4s ease, color 0.4s ease;
+        }
+        .display-flex {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
 
-    .btn-filter:hover,
-    .btn-filter.active {
-      background-color: rgba(255, 255, 255, 0.2);
-    }
+        /* STAR CANVAS */
+        #starfield {
+            opacity: var(--starfield-opacity);
+            transition: opacity 0.4s ease;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
 
-    .btn-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--primary);
-      transition: all var(--transition-fast) ease;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-    }
+        /* NOISE OVERLAY */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+            opacity: var(--noise-opacity);
+            pointer-events: none;
+            z-index: 1;
+            transition: opacity 0.4s ease;
+        }
 
-    .btn-back:hover {
-      background-color: var(--neutral-200);
-      color: var(--primary-dark);
-    }
+        /* SCROLLBAR */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
 
-    /* Project Cards */
-    .project-card {
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-      transition: all var(--transition-medium) ease;
-      cursor: pointer;
-      height: 100%;
-      background-color: rgb(234, 234, 234);
-      border: 0.1px solid rgb(169, 169, 169)
-    }
+        ::-webkit-scrollbar-track {
+            background: var(--page-bg);
+        }
 
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-    }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--neon-cyan), var(--neon-magenta));
+            border-radius: 2px;
+        }
 
-    .project-card-image {
-      height: 200px;
-      background-size: cover;
-      background-position: center;
-    }
+        /* GLASS CARD */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+        }
 
-    .project-card-body {
-      padding: 1.5rem;
+        /* GLOW TEXT */
+        .glow-cyan {
+            text-shadow: 0 0 20px var(--neon-cyan), 0 0 40px rgba(0, 245, 255, 0.3);
+        }
 
-    }
+        .glow-magenta {
+            text-shadow: 0 0 20px var(--neon-magenta), 0 0 40px rgba(255, 0, 229, 0.3);
+        }
 
-    .project-category {
-      display: inline-block;
-      padding: 0.25rem 0.75rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-    }
+        .glow-gold {
+            text-shadow: 0 0 20px var(--neon-gold), 0 0 40px rgba(255, 215, 0, 0.3);
+        }
 
-    .project-category.web {
-      background-color: rgba(0, 102, 204, 0.1);
-      color: var(--primary);
-    }
+        /* GRADIENT TEXT */
+        .grad-text {
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta), var(--neon-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    .project-category.mobile {
-      background-color: rgba(255, 149, 0, 0.1);
-      color: var(--accent);
-    }
+        /* NAV */
+        #navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 5%;
+            transition: all .3s ease;
+        }
 
-    .project-category.design {
-      background-color: rgba(220, 53, 69, 0.1);
-      color: var(--error);
-    }
+        #navbar.scrolled {
+            background: var(--nav-scrolled-bg);
+            backdrop-filter: blur(30px);
+            border-bottom: 1px solid var(--card-border);
+        }
 
-    .tech-stack {
-      display: inline-block;
-      padding: 0.25rem 0.75rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-      margin-right: 0.5rem;
-      background-color: rgba(0, 102, 204, 0.1);
-      color: var(--primary);
-    }
+        .nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 0;
+        }
 
-    .btn-visit {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background-color: var(--primary);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: all var(--transition-fast) ease;
-      border: none;
-      cursor: pointer;
-    }
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 900;
+            letter-spacing: .15em;
+        }
 
-    .btn-visit:hover {
-      background-color: var(--primary-dark);
-      color: white;
-      transform: translateY(-2px);
-    }
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
 
-    /* Project Details */
-    .project-details {
-      opacity: 0;
-      transition: opacity var(--transition-medium) ease;
-    }
+        .nav-tab {
+            font-family: 'Space Mono', monospace;
+            font-size: .8rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            padding: 8px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all .3s ease;
+            color: var(--page-text-muted);
+            position: relative;
+            overflow: hidden;
+        }
 
-    .project-details.visible {
-      opacity: 1;
-    }
+        .nav-tab::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(255, 0, 229, 0.1));
+            opacity: 0;
+            transition: opacity .3s;
+        }
 
-    .project-hero {
-      height: 93dvh;
-      width: 100%;
-      background-size: contain;
-      background-position: center;
-      border-radius: 12px;
-      margin-bottom: 2rem;
-      position: relative;
-    }
+        .nav-tab:hover::before,
+        .nav-tab.active::before {
+            opacity: 1;
+        }
 
-    .project-info {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin: 2rem 0;
-    }
+        .nav-tab:hover,
+        .nav-tab.active {
+            color: var(--neon-cyan);
+            border-color: rgba(0, 245, 255, 0.3);
+        }
 
-    .project-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1rem;
-      margin: 2rem 0;
-    }
+        .nav-cta {
+            font-family: 'Space Mono', monospace;
+            font-size: .75rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            padding: 10px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta));
+            color: #000;
+            font-weight: 700;
+            border: none;
+            box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+            transition: all .3s ease;
+        }
 
-    .gallery-image {
-      border-radius: 8px;
-      overflow: hidden;
-      height: 180px;
-    }
+        .nav-cta:hover {
+            box-shadow: 0 0 40px rgba(0, 55, 255, 0.6);
+            transform: translateY(-2px);
+        }
 
-    .gallery-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform var(--transition-medium) ease;
-    }
+        /* THEME TOGGLE */
+        .theme-toggle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid var(--card-border);
+            background: var(--card-bg);
+            color: var(--page-text-muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: all .3s ease;
+            margin-left: 8px;
+        }
+        .theme-toggle:hover {
+            color: var(--neon-cyan);
+            border-color: var(--neon-cyan);
+        }
+        .theme-toggle .icon-light { display: none; }
+        .theme-toggle .icon-dark { display: inline-flex; align-items: center; gap: 6px; }
+        [data-theme="light"] .theme-toggle .icon-dark { display: none; }
+        [data-theme="light"] .theme-toggle .icon-light { display: inline-flex; align-items: center; gap: 6px; }
+        .text-muted { color: var(--page-text-muted); }
+        .text-primary { color: var(--page-text); }
 
-    .gallery-image:hover img {
-      transform: scale(1.05);
-    }
+        /* SECTIONS */
+        .section {
+            min-height: 100vh;
+            position: relative;
+            z-index: 2;
+            display: none;
+        }
 
-    /* Animation Classes */
-    .fade-in {
-      animation: fadeIn var(--transition-medium) ease forwards;
-    }
+        .section.active {
+            display: block;
+        }
 
-    .fade-out {
-      animation: fadeOut var(--transition-fast) ease forwards;
-    }
+        /* ============ HOME HERO ============ */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
+        .hero-bg-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: orbFloat 8s ease-in-out infinite;
+            pointer-events: none;
+        }
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+        @keyframes orbFloat {
 
-    @keyframes fadeOut {
-      from {
-        opacity: 1;
-        transform: translateY(0);
-      }
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
 
-      to {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-    }
+            50% {
+                transform: translateY(-30px) scale(1.05);
+            }
+        }
 
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      .filters {
-        margin-top: 1rem;
-        text-align: left;
-      }
+        .hero-bg-orb { opacity: var(--orb-opacity); transition: opacity 0.4s ease; }
+        .orb1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 245, 255, 0.12), transparent 70%);
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
 
-      .btn-filter {
-        margin-left: 0;
-        margin-right: 0.5rem;
-        margin-bottom: 0.5rem;
-        font-size: 0.9rem;
-      }
+        .orb2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 0, 229, 0.1), transparent 70%);
+            bottom: -100px;
+            right: -100px;
+            animation-delay: -4s;
+        }
 
-      .project-info {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
+        .orb3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.07), transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: -2s;
+        }
 
-      .project-hero {
-        height: 250px;
-      }
-    }
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
 
-    /* Footer */
-    .footer {
-      background-color: var(--neutral-800);
-      color: white;
-    }
-  </style>
+        .hero-badge {
+            display: inline-block;
+            font-family: 'Space Mono', monospace;
+            font-size: .7rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--neon-cyan);
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            padding: 6px 20px;
+            border-radius: 50px;
+            margin-bottom: 24px;
+            background: rgba(0, 245, 255, 0.05);
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -.02em;
+            margin-bottom: 8px;
+        }
+
+        .hero-sub {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            color: var(--page-text-muted);
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        .hero-tagline {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(.8rem, 1.5vw, .9rem);
+            color: var(--neon-gold);
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .btn-primary {
+            font-family: 'Space Mono', monospace;
+            font-size: .8rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            padding: 14px 36px;
+            border-radius: 50px;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta));
+            color: #000;
+            font-weight: 700;
+            border: none;
+            box-shadow: 0 0 10px rgba(0, 245, 255, 0.4);
+            transition: all .3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0px 0px 40px rgba(11, 75, 77, 0.7);
+        }
+
+        .btn-outline {
+            font-family: 'Space Mono', monospace;
+            font-size: .8rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            padding: 14px 36px;
+            border-radius: 50px;
+            cursor: pointer;
+            background: transparent;
+            color: var(--neon-cyan);
+            border: 1px solid rgba(43, 111, 113, 0.4);
+            transition: all .3s ease;
+        }
+
+        .btn-outline:hover {
+            background: rgba(0, 245, 255, 0.08);
+            border-color: var(--neon-cyan);
+        }
+
+        /* STATS ROW */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            max-width: 700px;
+            margin: 0 auto;
+            border: 1px solid rgba(0, 245, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .stat-item {
+            padding: 20px 16px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.02);
+            border-right: 1px solid rgba(0, 245, 255, 0.1);
+        }
+
+        .stat-item:last-child {
+            border-right: none;
+        }
+
+        .stat-num {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--neon-cyan);
+            display: block;
+        }
+
+        .stat-lbl {
+            font-size: .65rem;
+            color: var(--page-text-muted);
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            margin-top: 4px;
+            display: block;
+        }
+
+        /* FLOATING TECH TAGS */
+        .floating-tags {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .ftag {
+            position: absolute;
+            font-family: 'Space Mono', monospace;
+            font-size: .65rem;
+            color: rgba(0, 245, 255, 0.5);
+            letter-spacing: .15em;
+            border: 1px solid rgba(0, 245, 255, 0.15);
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: rgba(0, 245, 255, 0.03);
+            animation: floatTag 6s ease-in-out infinite;
+        }
+
+        @keyframes floatTag {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* ============ SERVICES SECTION ============ */
+        #services {
+            padding: 120px 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-badge {
+            font-family: 'Space Mono', monospace;
+            font-size: .7rem;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            color: var(--neon-magenta);
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 3.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+        }
+
+        /* SERVICE CATEGORY TABS */
+        .service-cats {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .scat-btn {
+            font-family: 'Space Mono', monospace;
+            font-size: .7rem;
+            letter-spacing: .1em;
+            padding: 8px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            border: 1px solid var(--card-border);
+            color: var(--page-text-muted);
+            background: transparent;
+            transition: all .3s;
+        }
+
+        .scat-btn.active,
+        .scat-btn:hover {
+            background: rgba(0, 245, 255, 0.1);
+            color: var(--neon-cyan);
+            border-color: var(--neon-cyan);
+        }
+
+        /* SERVICE CARDS GRID */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            padding: 32px;
+            border-radius: 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            position: relative;
+            overflow: hidden;
+            transition: all .4s ease;
+            cursor: pointer;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+            opacity: 0;
+            transition: opacity .3s;
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(0, 245, 255, 0.05), transparent 70%);
+            opacity: 0;
+            transition: opacity .4s;
+        }
+
+        .service-card:hover {
+            border-color: rgba(0, 245, 255, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 245, 255, 0.1), 0 0 0 1px rgba(0, 245, 255, 0.1);
+        }
+
+        .service-card:hover::before,
+        .service-card:hover::after {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .service-icon i, .val-icon i { color: var(--neon-cyan); }
+        .founder-avatar i { font-size: 2.5rem; color: #fff; }
+        .clink i { margin-right: 8px; }
+
+        .service-card-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--page-text);
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card-desc {
+            font-size: .85rem;
+            line-height: 1.7;
+            color: var(--page-text-muted);
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stag {
+            font-family: 'Space Mono', monospace;
+            font-size: .8rem;
+            letter-spacing: .1em;
+            padding: 3px 10px;
+            border-radius: 20px;
+            background: rgba(0, 245, 255, 0.06);
+            border: 1px solid rgba(0, 245, 255, 0.15);
+            color: rgba(89, 0, 255, 0.7);
+        }
+
+        /* BIG FEATURE BANNER */
+        .feature-banner {
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 60px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.06), rgba(255, 0, 229, 0.06));
+            border: 1px solid rgba(0, 245, 255, 0.15);
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .feature-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 245, 255, 0.08), transparent 70%);
+            pointer-events: none;
+        }
+
+        /* ============ ABOUT SECTION ============ */
+        #about {
+            padding: 120px 5%;
+        }
+
+        /* ============ TEAM SECTION ============ */
+        #team {
+            padding: 120px 5%;
+        }
+
+        .team-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .team-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 28px 24px 24px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(0, 245, 255, 0.35);
+            box-shadow: 0 20px 60px rgba(0, 245, 255, 0.18);
+        }
+
+        .team-avatar {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            background: radial-gradient(circle at 20% 0%, rgba(0,245,255,.25), transparent 60%);
+        }
+
+        .team-avatar img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .team-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            font-weight: 800;
+        }
+
+        .team-role {
+            font-family: 'Space Mono', monospace;
+            font-size: .75rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--page-text-muted);
+        }
+
+        .team-bio {
+            font-size: .8rem;
+            line-height: 1.7;
+            color: var(--page-text-muted);
+        }
+
+        .team-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 8px;
+        }
+
+        .team-link {
+            font-family: 'Space Mono', monospace;
+            font-size: .7rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--neon-cyan);
+            text-decoration: none;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(var(--neon-cyan), var(--neon-magenta));
+        }
+
+        .t-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .t-dot {
+            position: absolute;
+            left: -28px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--neon-cyan);
+            box-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        .t-year {
+            font-family: 'Space Mono', monospace;
+            font-size: .7rem;
+            color: var(--neon-cyan);
+            letter-spacing: .2em;
+            margin-bottom: 6px;
+        }
+
+        .t-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .t-text {
+            font-size: .85rem;
+            color: var(--page-text-muted);
+            line-height: 1.7;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .val-card {
+            padding: 20px;
+            border-radius: 14px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            transition: all .3s;
+        }
+
+        .val-card:hover {
+            border-color: rgba(0, 245, 255, 0.3);
+            background: rgba(0, 245, 255, 0.05);
+        }
+
+        .val-icon {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+
+        .val-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: .8rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+            margin-bottom: 6px;
+        }
+
+        .val-desc {
+            font-size: .78rem;
+            color: var(--page-text-muted);
+            line-height: 1.6;
+        }
+
+        /* FOUNDER CARD */
+        .founder-card {
+            padding: 40px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.05), rgba(255, 0, 229, 0.05));
+            border: 1px solid rgba(0, 245, 255, 0.15);
+            text-align: center;
+        }
+
+        .founder-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 0 30px rgba(0, 245, 255, 0.4);
+        }
+
+        /* ============ WORKS / PORTFOLIO ============ */
+        #works {
+            padding: 120px 5%;
+        }
+
+        .portfolio-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .portfolio-item {
+            margin-bottom: 40px;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            background: var(--card-bg);
+            transition: border-color .3s;
+        }
+
+        .portfolio-item:hover {
+            border-color: rgba(0, 245, 255, 0.3);
+        }
+
+        .portfolio-iframe-wrap {
+            height: 80vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-iframe-wrap iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: var(--page-bg);
+            pointer-events: none;
+        }
+
+        .iframe-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(var(--page-bg), transparent);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            gap: 8px;
+            pointer-events: none;
+        }
+
+        .dot-r {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ff5f57;
+        }
+
+        .dot-y {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #febc2e;
+        }
+
+        .dot-g {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #28c840;
+        }
+
+        .iframe-url {
+            font-family: 'Space Mono', monospace;
+            font-size: .7rem;
+            color: var(--page-text-muted);
+            background: rgba(0, 0, 0, 0.4);
+            padding: 4px 16px;
+            border-radius: 20px;
+            margin-left: 8px;
+        }
+        [data-theme="light"] .iframe-url { background: rgba(0, 0, 0, 0.08); }
+
+        .portfolio-info {
+            padding: 28px 32px;
+            border-top: 1px solid rgba(0, 245, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .portfolio-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--page-text);
+        }
+
+        .portfolio-desc {
+            font-size: .8rem;
+            color: var(--page-text-muted);
+            margin-top: 4px;
+            line-height: 1.5;
+        }
+
+        .port-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .ptag {
+            font-family: 'Space Mono', monospace;
+            font-size: .55rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            background: rgba(255, 0, 229, 0.08);
+            border: 1px solid rgba(255, 0, 229, 0.15);
+            color: rgba(255, 0, 229, 0.7);
+        }
+
+        .portfolio-link {
+            font-family: 'Space Mono', monospace;
+            font-size: .7rem;
+            letter-spacing: .1em;
+            padding: 8px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            color: var(--neon-cyan);
+            text-decoration: none;
+            transition: all .3s;
+            white-space: nowrap;
+        }
+
+        .portfolio-link:hover {
+            background: rgba(0, 245, 255, 0.1);
+        }
+
+        /* CONTACT CTA SECTION */
+        .contact-section {
+            padding: 100px 5%;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.03), rgba(255, 0, 229, 0.03));
+            border-top: 1px solid rgba(0, 245, 255, 0.08);
+        }
+
+        .contact-cta {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-big {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            font-weight: 900;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .clink {
+            font-family: 'Space Mono', monospace;
+            font-size: .75rem;
+            padding: 10px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            border: 1px solid var(--input-border);
+            color: var(--page-text-muted);
+            text-decoration: none;
+            transition: all .3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .clink:hover {
+            color: var(--neon-cyan);
+            border-color: var(--neon-cyan);
+            background: rgba(0, 245, 255, 0.05);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 40px 5%;
+            border-top: 1px solid var(--card-border);
+            background: var(--footer-bg);
+            position: relative;
+            z-index: 2;
+            transition: background 0.4s ease, border-color 0.4s ease;
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 900;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            font-family: 'Space Mono', monospace;
+            font-size: .7rem;
+            color: var(--page-text-muted);
+            text-decoration: none;
+            transition: color .3s;
+            letter-spacing: .1em;
+        }
+
+        .footer-links a:hover {
+            color: var(--neon-cyan);
+        }
+
+        .footer-copy {
+            font-family: 'Space Mono', monospace;
+            font-size: .65rem;
+            color: var(--page-text-muted);
+            letter-spacing: .1em;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .soc {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .9rem;
+            text-decoration: none;
+            color: var(--page-text-muted);
+            transition: all .3s;
+        }
+
+        .soc:hover {
+            border-color: var(--neon-cyan);
+            color: var(--neon-cyan);
+            box-shadow: 0 0 15px rgba(0, 245, 255, 0.3);
+        }
+
+        /* ANIMATED BORDER */
+        @keyframes borderRot {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .animated-border {
+            background: linear-gradient(270deg, var(--neon-cyan), var(--neon-magenta), var(--neon-gold), var(--neon-cyan));
+            background-size: 400% 400%;
+            animation: borderRot 4s ease infinite;
+            padding: 1px;
+            border-radius: 20px;
+        }
+
+        .animated-border-inner {
+            background: var(--deep-black);
+            border-radius: 19px;
+            padding: 32px;
+        }
+
+        /* GLITCH ANIMATION */
+        @keyframes glitch1 {
+
+            0%,
+            100% {
+                clip-path: inset(0 0 95% 0);
+                transform: translate(-2px);
+            }
+
+            20% {
+                clip-path: inset(30% 0 50% 0);
+                transform: translate(2px);
+            }
+
+            40% {
+                clip-path: inset(60% 0 20% 0);
+                transform: translate(-1px);
+            }
+
+            60% {
+                clip-path: inset(80% 0 5% 0);
+                transform: translate(1px);
+            }
+
+            80% {
+                clip-path: inset(10% 0 80% 0);
+                transform: translate(-2px);
+            }
+        }
+
+        /* SCROLL REVEAL */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all .8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* GRID LINES BG */
+        .grid-bg {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(var(--grid-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        /* MOBILE MENU */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 1.5px;
+            background: var(--neon-cyan);
+            display: block;
+            transition: all .3s;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(2, 4, 8, 0.97);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .mobile-menu.open {
+            display: flex;
+        }
+       
+
+        .mobile-tab {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--page-text-muted);
+            cursor: pointer;
+            letter-spacing: .15em;
+            transition: color .3s;
+        }
+
+        .mobile-tab:hover,
+        .mobile-tab.active {
+            color: var(--neon-cyan);
+        }
+
+        .mobile-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            font-family: 'Space Mono', monospace;
+            font-size: 1.5rem;
+            color: var(--page-text-muted);
+            cursor: pointer;
+        }
+
+        @media(max-width:900px) {
+
+            .nav-tabs,
+            .nav-cta {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-banner {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-iframe-wrap {
+                height: 50vh;
+            }
+        }
+
+        @media(max-width:600px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <div id="projects-container" class="container-fluid p-0">
-    <header class="header py-4 mb-5">
-      <div class="container">
-        <div class="row align-items-center w-100">
-          <h1 class="display fw-bold text-center" id="page-title">Mahesh Darkunde</h1>
-          <!-- <div class="col-md-6">
-            
-              <p class="lead" id="page-subtitle">A showcase of my recent work and expertise</p>
+
+    <canvas id="starfield"></canvas>
+
+    <!-- NAV -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <div class="nav-logo grad-text" onclick="showSection('services')" style="cursor:pointer;">
+                <img 
+                style="width: 300px; height: auto;"
+                src="https://res.cloudinary.com/dahbnl1y3/image/upload/v1773118315/Feofo_Digital_Marketing_gaqhoq.png" alt="Feofo Digital Marketing">
             </div>
-            <div class="col-md- text-md-center">
-              <div class="filters" id="project-filters">
-                <button class="btn btn-filter active" data-filter="all">All</button>
-                <button class="btn btn-filter" data-filter="web">Web</button>
-                <button class="btn btn-filter" data-filter="mobile">Mobile</button>
-                <button class="btn btn-filter" data-filter="design">Design</button>
-              </div>
-            </div> -->
+            <div class="nav-tabs">
+                <div class="nav-tab active" onclick="showSection('services')">Services</div>
+                <div class="nav-tab" onclick="showSection('about')">About</div>
+                <div class="nav-tab" onclick="showSection('team')">Our Team</div>
+                <div class="nav-tab" onclick="showSection('works')">Our Works</div>
+            </div>
+            <button class="nav-cta"
+                onclick="showSection('about');document.getElementById('contact-cta').scrollIntoView({behavior:'smooth'})">Let's
+                Talk →</button>
+            <div class="hamburger" onclick="toggleMobileMenu()">
+                <span></span><span></span><span></span>
+            </div>
         </div>
-      </div>
-    </header>
+    </nav>
 
-    <main class="container mb-5">
-      <!-- Projects List View -->
-      <div id="projects-list" class="row g-4">
-        <!-- Projects will be dynamically inserted here -->
-      </div>
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-close" onclick="toggleMobileMenu()">✕</div>
+        <div class="mobile-tab active" onclick="showSection('services');toggleMobileMenu()">Services</div>
+        <div class="mobile-tab" onclick="showSection('about');toggleMobileMenu()">About</div>
+        <div class="mobile-tab" onclick="showSection('team');toggleMobileMenu()">Our Team</div>
+        <div class="mobile-tab" onclick="showSection('works');toggleMobileMenu()">Our Works</div>
+        <button class="btn-primary" onclick="showSection('about');toggleMobileMenu()" style="margin-top:20px;">Let's
+            Talk</button>
+    </div>
 
-      <!-- Single Project View -->
-      <div id="project-details" class="project-details d-none">
-        <button id="back-button" class="btn btn-back mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="m12 19-7-7 7-7" />
-            <path d="M19 12H5" />
-          </svg>
-          Back to Projects
-        </button>
-        <div class="project-content">
-          <!-- Project details will be dynamically inserted here -->
+    <!-- ============ SERVICES SECTION ============ -->
+    <section class="section active" id="services">
+        <div class="grid-bg" style="position:fixed;"></div>
+        <div style="max-width:1400px;margin:0 auto;position:relative;z-index:2;">
+            <div class="section-header reveal">
+                <!-- <span class="section-badge">// What We Do</span> -->
+                <h2 class="section-title">Our <span class="grad-text">Services</span></h2>
+                <p
+                    class="text-muted" style="margin-top:16px;font-size:.95rem;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.7;">
+                    From creative content to enterprise software — FEOFO delivers every digital solution your business
+                    needs to thrive in 2025 and beyond.
+                </p>
+            </div>
+
+            <!-- CATEGORY TABS -->
+            <div class="service-cats reveal">
+                <button class="scat-btn active" onclick="filterServices('all',this)">All Services</button>
+                <button class="scat-btn" onclick="filterServices('creative',this)">Creative & Media</button>
+                <button class="scat-btn" onclick="filterServices('ads',this)">Ads & Marketing</button>
+                <button class="scat-btn" onclick="filterServices('tech',this)">Tech & Dev</button>
+                <button class="scat-btn" onclick="filterServices('automation',this)">Automation</button>
+                <button class="scat-btn" onclick="filterServices('ecom',this)">E-Commerce</button>
+            </div>
+
+            <div class="services-grid" id="servicesGrid">
+
+                <!-- CREATIVE & MEDIA -->
+                <div class="service-card reveal" data-cat="creative">
+                    <div class="service-icon"
+                        style="background:linear-gradient(135deg,rgba(0,245,255,0.15),rgba(0,245,255,0.05));"><i class="fa-solid fa-mobile-screen"></i></div>
+                    <div class="service-card-title">Social Media Management</div>
+                    <div class="service-card-desc">End-to-end social media strategy, content creation, scheduling, and
+                        community management. We grow your brand presence across Instagram, Facebook, LinkedIn, Twitter,
+                        and more with data-driven content strategies that convert followers into customers.</div>
+                    <div class="service-tags"><span class="stag">Content Strategy</span><span
+                            class="stag">Reels</span><span class="stag">Engagement</span><span
+                            class="stag">Analytics</span></div>
+                </div>
+
+                <div class="service-card reveal" data-cat="creative">
+                    <div class="service-icon"
+                        style="background:linear-gradient(135deg,rgba(255,0,229,0.15),rgba(255,0,229,0.05));"><i class="fa-solid fa-palette"></i></div>
+                    <div class="service-card-title">Creative Design & Graphics</div>
+                    <div class="service-card-desc">Brand identity, logo design, social media creatives, banners,
+                        infographics, and print materials. Our designers craft visually stunning graphics that
+                        communicate your brand story powerfully. Every pixel is intentional.</div>
+                    <div class="service-tags"><span class="stag">Logo Design</span><span
+                            class="stag">Branding</span><span class="stag">Social Posts</span><span
+                            class="stag">Print</span></div>
+                </div>
+
+                <div class="service-card reveal" data-cat="creative">
+                    <div class="service-icon"
+                        style="background:linear-gradient(135deg,rgba(255,215,0,0.15),rgba(255,215,0,0.05));"><i class="fa-solid fa-video"></i></div>
+                    <div class="service-card-title">Video & Photo Editing</div>
+                    <div class="service-card-desc">Professional video editing for Reels, YouTube, ads, and corporate
+                        content. Photo retouching, color grading, product photography editing. We also handle complete
+                        podcast production — shoot, edit, and publish-ready content.</div>
+                    <div class="service-tags"><span class="stag">Reels Editing</span><span
+                            class="stag">Podcast</span><span class="stag">Color Grading</span><span class="stag">Photo
+                            Edit</span></div>
+                </div>
+
+                <div class="service-card reveal" data-cat="creative">
+                    <div class="service-icon"
+                        style="background:linear-gradient(135deg,rgba(0,245,255,0.15),rgba(255,0,229,0.1));"><i class="fa-solid fa-box"></i></div>
+                    <div class="service-card-title">Packaging & Product Design</div>
+                    <div class="service-card-desc">Standout packaging design that captures attention on shelves and
+                        online listings. From concept to print-ready artwork — boxes, labels, bags, bottles. We design
+                        packaging that tells your product's story and drives purchase decisions.</div>
+                    <div class="service-tags"><span class="stag">Package Design</span><span class="stag">Label
+                            Art</span><span class="stag">3D Mockups</span><span class="stag">Print Ready</span></div>
+                </div>
+
+                <!-- ADS & MARKETING -->
+                <div class="service-card reveal" data-cat="ads">
+                    <div class="service-icon"
+                        style="background:linear-gradient(135deg,rgba(255,100,0,0.15),rgba(255,100,0,0.05));"><i class="fa-solid fa-chart-line"></i></div>
+                    <div class="service-card-title">Meta, Google & LinkedIn Ads</div>
+                    <div class="service-card-desc">Full-funnel paid advertising campaigns on Meta (Facebook &
+                        Instagram), Google Search & Display, LinkedIn, YouTube, and more. We handle campaign
+                        architecture, creative production, A/B testing, and ongoing optimization for maximum ROI and
+                        lead generation.</div>
+                    <div class="service-tags"><span class="stag">Facebook Ads</span><span class="stag">Google
+                            Ads</span><span class="stag">LinkedIn Ads</span><span class="stag">Lead Gen</span></div>
+                </div>
+
+                <!-- AUTOMATION -->
+                <div class="service-card reveal" data-cat="automation">
+                    <div class="service-icon"
+                        style="background:linear-gradient(135deg,rgba(0,255,150,0.15),rgba(0,255,150,0.05));"><i class="fa-solid fa-robot"></i></div>
+                    <div class="service-card-title">WhatsApp & Social Automation</div>
+                    <div class="service-card-desc">Automated WhatsApp marketing campaigns, chatbots, and business
+                        workflows. Social media auto-posting, DM automation, lead nurturing sequences, and CRM
+                        integrations. We build intelligent automation systems that work 24/7 so you don't have to.</div>
+                    <div class="service-tags"><span class="stag">WhatsApp Bot</span><span
+                            class="stag">Chatbots</span><span class="stag">Auto-Post</span><span
+                            class="stag">Workflows</span></div>
+                </div>
+
+                <!-- TECH & DEV -->
+                <div class="service-card reveal" data-cat="tech">
+                    <div class="service-icon"
+                        style="background:linear-gradient(135deg,rgba(0,200,255,0.15),rgba(0,100,255,0.1));"><i class="fa-solid fa-laptop-code"></i></div>
+                    <div class="service-card-title">Websites & Mobile Apps</div>
+                    <div class="service-card-desc">Custom websites, PWAs, and mobile applications (iOS & Android). From
+                        landing pages and business websites to complex web platforms with user authentication,
+                        dashboards, and API integrations. Built with modern tech stacks for speed and scalability.</div>
+                    <div class="service-tags"><span class="stag">React</span><span class="stag">Next.js</span><span
+                            class="stag">iOS/Android</span><span class="stag">PWA</span></div>
+                </div>
+
+                <div class="service-card reveal" data-cat="tech">
+                    <div class="service-icon"
+                        style="background:linear-gradient(135deg,rgba(150,0,255,0.15),rgba(150,0,255,0.05));"><i class="fa-solid fa-building"></i></div>
+                    <div class="service-card-title">CRM, POS & Business Software</div>
+                    <div class="service-card-desc">Custom CRM systems, Point-of-Sale software, billing platforms,
+                        inventory management, ERP solutions, and complete business management suites. We build the
+                        operational backbone your business needs to scale efficiently and stay organized.</div>
+                    <div class="service-tags"><span class="stag">Custom CRM</span><span class="stag">POS
+                            System</span><span class="stag">Billing</span><span class="stag">ERP</span></div>
+                </div>
+
+                <div class="service-card reveal" data-cat="tech">
+                    <div class="service-icon"
+                        style="background:linear-gradient(135deg,rgba(255,215,0,0.15),rgba(255,150,0,0.1));"><i class="fa-solid fa-chart-line"></i></div>
+                    <div class="service-card-title">Data, Analytics & Dashboards</div>
+                    <div class="service-card-desc">Business intelligence dashboards, data visualization, analytics
+                        setup, and reporting automation. We turn your raw data into actionable insights with beautiful
+                        interactive dashboards — Metabase, Power BI, custom-built, or Looker Studio integrations.</div>
+                    <div class="service-tags"><span class="stag">Dashboards</span><span class="stag">Power
+                            BI</span><span class="stag">Data Analysis</span><span class="stag">BI Reports</span></div>
+                </div>
+
+                <div class="service-card reveal" data-cat="tech">
+                    <div class="service-icon"
+                        style="background:linear-gradient(135deg,rgba(0,255,200,0.15),rgba(0,200,100,0.1));"><i class="fa-solid fa-server"></i></div>
+                    <div class="service-card-title">Server & Self-Hosting Solutions</div>
+                    <div class="service-card-desc">Custom server setup, self-hosted email servers, local backup systems,
+                        VPS management, Docker deployments, data migration, and cloud infrastructure. Own your
+                        infrastructure — we set it up, secure it, and keep it running at peak performance.</div>
+                    <div class="service-tags"><span class="stag">Email Server</span><span class="stag">VPS</span><span
+                            class="stag">Docker</span><span class="stag">Data Migration</span></div>
+                </div>
+
+                <!-- E-COMMERCE -->
+                <div class="service-card reveal" data-cat="ecom">
+                    <div class="service-icon"
+                        style="background:linear-gradient(135deg,rgba(0,200,100,0.15),rgba(0,245,255,0.08));"><i class="fa-solid fa-cart-shopping"></i></div>
+                    <div class="service-card-title">E-Commerce Store Setup</div>
+                    <div class="service-card-desc">Complete store setup and management for Shopify, Amazon, Flipkart,
+                        Meesho, Blinkit, Zepto, and other platforms. Product listing optimization, inventory setup,
+                        pricing strategy, and ongoing account management to maximize your online sales.</div>
+                    <div class="service-tags"><span class="stag">Shopify</span><span class="stag">Amazon</span><span
+                            class="stag">Flipkart</span><span class="stag">Meesho</span><span
+                            class="stag">Blinkit</span></div>
+                </div>
+
+                <div class="service-card reveal" data-cat="ecom">
+                    <div class="service-icon"
+                        style="background:linear-gradient(135deg,rgba(255,80,80,0.15),rgba(255,80,80,0.05));"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    <div class="service-card-title">SEO & Google My Business</div>
+                    <div class="service-card-desc">Technical SEO, on-page optimization, local SEO, and Google My
+                        Business setup & management. We get your business ranking on Google with proven white-hat
+                        strategies, citation building, and content marketing that drives organic traffic long-term.
+                    </div>
+                    <div class="service-tags"><span class="stag">SEO</span><span class="stag">GMB</span><span
+                            class="stag">Local SEO</span><span class="stag">Link Building</span></div>
+                </div>
+
+            </div>
+
+            <!-- BIG FEATURE BANNER -->
+            <div class="feature-banner reveal" style="margin-top:60px;">
+                <div>
+                    <span
+                        style="font-family:'Space Mono',monospace;font-size:.7rem;color:var(--neon-gold);letter-spacing:.2em;text-transform:uppercase;">//
+                        Why Choose FEOFO?</span>
+                    <h3 style="font-family:'Orbitron',sans-serif;font-size:2rem;font-weight:900;margin:16px 0;">One
+                        Agency.<br /><span class="grad-text">All Solutions.</span></h3>
+                    <p class="text-muted" style="line-height:1.8;font-size:.9rem;">Stop juggling 5 different agencies. FEOFO
+                        handles everything — your creatives, your code, your ads, your automation, your server, your
+                        analytics. One team. One invoice. One vision. Maximum results.</p>
+                    <button class="btn-primary" style="margin-top:24px;"
+                        onclick="showSection('about');document.getElementById('contact-cta').scrollIntoView({behavior:'smooth'})">Get
+                        a Free Consultation →</button>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                    <div
+                        style="padding:16px;background:rgba(0,245,255,0.05);border-radius:12px;border:1px solid rgba(0,245,255,0.1);text-align:center;">
+                        <div style="font-family:'Orbitron',sans-serif;font-size:1.5rem;color:var(--neon-cyan);">150+
+                        </div>
+                        <div class="text-muted" style="font-size:.7rem;margin-top:4px;">Happy Clients & Projects</div>
+                    </div>
+                    <div
+                        style="padding:16px;background:rgba(255,0,229,0.05);border-radius:12px;border:1px solid rgba(255,0,229,0.1);text-align:center;">
+                        <div style="font-family:'Orbitron',sans-serif;font-size:1.5rem;color:var(--neon-magenta);">5+
+                        </div>
+                        <div class="text-muted" style="font-size:.7rem;margin-top:4px;">Years in Industry (since 2020)</div>
+                    </div>
+                    <div
+                        style="padding:16px;background:rgba(255,215,0,0.05);border-radius:12px;border:1px solid rgba(255,215,0,0.1);text-align:center;">
+                        <div style="font-family:'Orbitron',sans-serif;font-size:1.5rem;color:var(--neon-gold);">12+
+                        </div>
+                        <div class="text-muted" style="font-size:.7rem;margin-top:4px;">Service Categories</div>
+                    </div>
+                    <div
+                        style="padding:16px;background:rgba(0,245,255,0.05);border-radius:12px;border:1px solid rgba(0,245,255,0.1);text-align:center;">
+                        <div style="font-family:'Orbitron',sans-serif;font-size:1.5rem;color:var(--neon-cyan);">5★</div>
+                        <div class="text-muted" style="font-size:.7rem;margin-top:4px;">Google Reviews</div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </main>
+    </section>
 
-    <footer class="footer py-4 mt-5">
-      <div class="container text-center">
-        <p>&copy; 2025 My Portfolio. Mahesh Darkunde.</p>
-      </div>
+    <!-- ============ TEAM SECTION ============ -->
+    <section class="section" id="team">
+        <div class="grid-bg" style="position:fixed;"></div>
+        <div style="max-width:1200px;margin:0 auto;position:relative;z-index:2;">
+            <div class="section-header reveal">
+                <span class="section-badge">// Leadership</span>
+                <h2 class="section-title">Meet the <span class="grad-text">Team</span></h2>
+                <p class="text-muted" style="margin-top:16px;font-size:.95rem;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.7;">
+                    A compact core team leading design, development, and growth — built to ship fast and own outcomes end-to-end.
+                </p>
+            </div>
+
+            <div class="team-grid" id="teamGrid"></div>
+        </div>
+    </section>
+
+    <!-- ============ ABOUT SECTION ============ -->
+    <section class="section" id="about">
+        <div class="grid-bg" style="position:fixed;"></div>
+        <div style="max-width:1200px;margin:0 auto;position:relative;z-index:2;">
+            <div class="section-header reveal">
+                <span class="section-badge">// Who We Are</span>
+                <h2 class="section-title">About <span class="grad-text">FEOFO</span></h2>
+            </div>
+
+            <div class="about-grid">
+                <!-- TIMELINE -->
+                <div>
+                    <p class="text-muted reveal" style="font-size:.9rem;line-height:1.8;margin-bottom:40px;">
+                        FEOFO is a Pune-based full-service digital agency delivering creative, modern, and reliable
+                        digital solutions across India and beyond. We bring together design thinking, engineering
+                        expertise, and growth marketing — all under one roof.
+                    </p>
+                    <div class="timeline">
+                        <div class="t-item reveal">
+                            <div class="t-dot"></div>
+                            <!-- <div class="t-year">2016</div> -->
+                            <div class="t-title">The Spark</div>
+                            <div class="t-text">Founder Krushna Bochare begins digital content creation and online
+                                business management independently, discovering a passion for the digital world.</div>
+                        </div>
+                        <div class="t-item reveal">
+                            <div class="t-dot"
+                                style="background:var(--neon-magenta);box-shadow:0 0 10px var(--neon-magenta);"></div>
+                            <!-- <div class="t-year" style="color:var(--neon-magenta);">2018</div> -->
+                            <div class="t-title">FEOFO is Born</div>
+                            <div class="t-text">FEOFO officially launches as a freelance digital services venture. Small
+                                projects, big ambitions — and a commitment to client-first service from day one.</div>
+                        </div>
+                        <div class="t-item reveal">
+                            <div class="t-dot"
+                                style="background:var(--neon-gold);box-shadow:0 0 10px var(--neon-gold);"></div>
+                            <!-- <div class="t-year" style="color:var(--neon-gold);">2021</div> -->
+                            <div class="t-title">Scaling Up</div>
+                            <div class="t-text">Team expands. Services grow to include web development, mobile apps,
+                                paid advertising, and automation. Client base grows across Maharashtra and beyond.</div>
+                        </div>
+                        <div class="t-item reveal">
+                            <div class="t-dot"
+                                style="background:var(--neon-cyan);box-shadow:0 0 10px var(--neon-cyan);"></div>
+                            <!-- <div class="t-year">2023–Now</div> -->
+                            <div class="t-title">Full-Scale Agency</div>
+                            <div class="t-text">FEOFO evolves into a comprehensive digital agency with 150+ happy clients and projects delivered across 12+ service categories, maintaining a 5-star reputation.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FOUNDER + VALUES -->
+                <div>
+                    <div class="founder-card reveal" style="margin-bottom:30px;">
+                        <div class="founder-avatar rounded-full" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
+                            <img src="https://feofo.com/wp-content/uploads/2025/10/Untitled-design-21.png" alt="Krushna Bochare">
+                        
+                        </div>
+                        <h3
+                            style="font-family:'Orbitron',sans-serif;font-size:1.2rem;font-weight:900;margin-bottom:8px;">
+                            Krushna Bochare</h3>
+                        <p
+                            style="font-size:.75rem;color:var(--neon-cyan);font-family:'Space Mono',monospace;letter-spacing:.15em;margin-bottom:16px;">
+                            FOUNDER & DIGITAL STRATEGIST</p>
+                        <p class="text-muted" style="font-size:.85rem;line-height:1.7;">An engineer by profession and digital
+                            creator by passion. With hands-on experience in content creation, digital marketing, and
+                            online business management since 2016, Krushna built FEOFO to empower businesses with the
+                            digital tools they need to succeed.</p>
+                        <p class="text-muted" style="font-size:.8rem;line-height:1.7;margin-top:12px;">Also runs: <span
+                                style="color:var(--neon-cyan);">UpDail.com · SarkariSaathi.com · SportingFlix.com ·
+                                FilmiEnt.com</span></p>
+                        <a href="https://www.linkedin.com/in/krushnabochare/" target="_blank"
+                            style="display:inline-block;margin-top:16px;font-family:'Space Mono',monospace;font-size:.7rem;color:var(--neon-cyan);border:1px solid rgba(0,245,255,0.3);padding:6px 16px;border-radius:20px;text-decoration:none;transition:all .3s;">LinkedIn
+                            Profile →</a>
+                    </div>
+
+                   
+                </div>
+                <!-- <h4 class="text-primary" style="font-family:'Orbitron',sans-serif;font-size:.9rem;margin-bottom:16px;"
+                class="reveal">Our Core Values</h4> -->
+          
+            </div>
+            <div>
+                <div style="display: flex; flex-direction: row; gap: 16px; justify-content: between; align-items: center;">
+                    <div class=" w-25p">
+                        <div class="val-icon"><i class="fa-solid fa-fire"></i></div>
+                        <div class="val-title">Passionate</div>
+                        <div class="val-desc">Intensely enthusiastic about delivering superior experiences every
+                            single time.</div>
+                    </div>
+                    <div class=" w-25p">
+                        <div class="val-icon"><i class="fa-solid fa-handshake"></i></div>
+                        <div class="val-title">Respectful</div>
+                        <div class="val-desc">Kind and professional with clients and team members, even under
+                            pressure.</div>
+                    </div>
+                    <div class=" w-25p">
+                        <div class="val-icon"><i class="fa-solid fa-crown"></i></div>
+                        <div class="val-title">Ownership</div>
+                        <div class="val-desc">We own our work, our results, and our commitments — no excuses.</div>
+                    </div>
+                    <div class=" w-25p">
+                        <div class="val-icon"><i class="fa-solid fa-link"></i></div>
+                        <div class="val-title">Unified</div>
+                        <div class="val-desc">One team, one vision — working together to create seamless results for
+                            you.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTACT CTA -->
+            <div class="contact-section" id="contact-cta" style="margin-top:80px;border-radius:24px;">
+                <div class="contact-cta reveal">
+                    <span
+                        style="font-family:'Space Mono',monospace;font-size:.7rem;color:var(--neon-magenta);letter-spacing:.3em;text-transform:uppercase;display:block;margin-bottom:16px;">//
+                        Ready to Start?</span>
+                    <div class="cta-big">Let's Build Something <span class="grad-text">Extraordinary</span></div>
+                    <p class="text-muted" style="font-size:.9rem;line-height:1.7;margin-top:16px;">Schedule a free
+                        consultation. We'll analyze your needs, share our approach, and deliver a custom proposal — no
+                        pressure, no fluff.</p>
+                    <div class="contact-links">
+                        <a class="clink" href="tel:917028221812"><i class="fa-solid fa-phone"></i> +91 917028221812</a>
+                        <a class="clink" href="mailto:info@feofo.com"><i class="fa-solid fa-envelope"></i> info@feofo.com</a>
+                        <a class="clink" href="https://feofo.com" target="_blank"><i class="fa-solid fa-globe"></i> feofo.com</a>
+                        <a class="clink" href="https://www.linkedin.com/company/feofo" target="_blank"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
+                        <a class="clink" href="https://www.instagram.com/FEOFOServices" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                    </div>
+                    <p
+                        class="text-muted" style="font-family:'Space Mono',monospace;font-size:.65rem;margin-top:24px;letter-spacing:.1em;">
+                        <i class="fa-solid fa-location-dot" style="margin-right:6px;"></i>Pune, Maharashtra, India &nbsp;|&nbsp; Serving clients globally</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ WORKS SECTION ============ -->
+    <section class="section" id="works">
+        <div class="grid-bg" style="position:fixed;"></div>
+        <div style="max-width:1400px;margin:0 auto;position:relative;z-index:2;">
+            <div class="section-header reveal">
+                <span class="section-badge">// Our Portfolio</span>
+                <h2 class="section-title">Our <span class="grad-text">Works</span></h2>
+                <p
+                    class="text-muted" style="margin-top:16px;font-size:.95rem;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.7;">
+                    Real projects. Real results. 22 from portfolio plus client sites .
+                </p>
+            </div>
+
+            <div class="portfolio-grid" id="portfolioGrid"></div>
+
+           
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div>
+                <div class="footer-logo grad-text">FEOFO.COM</div>
+                <div
+                    class="text-muted" style="font-family:'Space Mono',monospace;font-size:.6rem;margin-top:6px;letter-spacing:.1em;">
+                    DIGITAL MARKETING & IT SOLUTIONS</div>
+            </div>
+            <div class="footer-links">
+                <a href="#" onclick="showSection('services')">Services</a>
+                <a href="#" onclick="showSection('about')">About</a>
+                <a href="#" onclick="showSection('works')">Portfolio</a>
+                <a href="https://feofo.com/contact/" target="_blank">Contact</a>
+            </div>
+            <div class="social-links">
+                <a class="soc" href="https://www.instagram.com/FEOFOServices" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a class="soc" href="https://www.linkedin.com/company/feofo" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a class="soc" href="https://www.facebook.com/FEOFOServices" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a class="soc" href="https://www.youtube.com/@feofo" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a class="soc" href="https://x.com/FEOFOMedia" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+            <div class="footer-copy">© 2026 FEOFO · All Rights Reserved · Pune, India</div>
+        </div>
     </footer>
-  </div>
 
-  <!-- Bootstrap & Custom Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    // Projects data array
-    const projectsData = [
-      {
-        id: 1,
-        title: "MHT CET Cell",
-        category: "web",
-        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746268891/Screenshot_2025-05-03_at_4.11.02_PM_we5gai.png",
-        description: "MHT CET Cell is the official body in Maharashtra that conducts the MHT CET entrance exam for engineering, pharmacy, and other professional courses.",
-        technologies: ["React.js", "Node.js", "MongoDB", "Assessment Engine"],
-        link: "https://cetcell.mahacet.org/"
-      },
-      {
-        id: 2,
-        title: "MHT CET Mock Test Platform",
-        category: "web",
-        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746269266/Screenshot_2025-05-03_at_4.17.24_PM_epecvc.png",
-        description: "Complete online platform for MHT-CET exam preparation with practice tests, performance analysis and comparative ranking.",
-        technologies: ["PHP", "Web Development", "Testing Platform", "Analytics Dashboard", "User Management"],
-        link: "https://www.mhtcetmocktest.com/"
-      },
-      {
-        id: 3,
-        title: "College of Engineering Ambajogai Website",
-        category: "web",
-        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746269633/Screenshot_2025-05-03_at_4.22.55_PM_rtcfao.png",
-        description: "Official website for Mahatma Basaveshwar Education Society's College of Engineering in Ambajogai with program information and student resources.",
-        technologies: ["WordPress", "Responsive Design", "Content Management", "Educational Portal"],
-        link: "https://www.coea.ac.in/"
-      },
-      {
-        id: 4,
-        title: "Einterio - Online Interior Design Platform",
-        category: "web",
-        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746270056/Screenshot_2025-05-03_at_4.30.33_PM_eo9anl.png",
-        description: "Virtual interior design service platform providing 3D design visualization, expert designer collaboration, and furniture recommendations.",
-        technologies: ["React Laravel","3D Visualization", "Designer Marketplace", "E-commerce Integration", "Interior Design Tools"],
-        link: "https://einterio.com/"
-      },
-      {
-        id: 5,
-        title: "MKT78 - Digital Marketing Agency",
-        category: "web",
-        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746270233/Screenshot_2025-05-03_at_4.33.24_PM_c56n7p.png",
-        description: "Website for a digital marketing agency specializing in SEO, content marketing, and online advertising solutions.",
-        technologies: ["WordPress", "Responsive Design", "SEO Optimization", "Content Management"],
-        link: "https://mkt78.com/"
-      },
-      {
-        id: 6,
-        title: "Feofo - E-commerce Feedback Platform",
-        category: "web",
-        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746273298/Screenshot_2025-05-03_at_5.24.26_PM_ex56vk.png",
-        description: "Customer feedback and review management platform for e-commerce businesses and online retailers.",
-        technologies: ["WordPress/PHP", "Analytics Dashboard", "API Integration", "E-commerce Tools"],
-        link: "https://feofo.com/"
-      },
-      {
-        id: 7,
-        title: "Sell My Dyson - Specialized Resale Platform",
-        category: "web",
-        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746273491/Screenshot_2025-05-03_at_5.27.29_PM_c4bqb3.png",
-        description: "Specialized e-commerce platform for buying and selling pre-owned Dyson products in the UK.",
-        technologies: ["E-commerce", "Payment Processing", "Product Management", "Marketplace Tools"],
-        link: "https://sellmydyson.co.uk/"
-      },
-      {
-        id: 8,
-        title: "Sarkari Saathi - Government Services Portal",
-        category: "web",
-        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746273611/Screenshot_2025-05-03_at_5.28.51_PM_zuz7mx.png",
-        description: "Comprehensive portal for accessing government schemes, services, and information for Indian citizens.",
-        technologies: ["HTML", "Search System", "Government APIs", "User Authentication"],
-        link: "https://sarkarisaathi.com/"
-      },
-      {
-        id: 9,
-        title: "management of cultural notices",
-        category: "web",
-        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746273729/Screenshot_2025-05-03_at_5.31.36_PM_ki6cj8.png",
-        description: "Smart solution for management of cultural notices and implementation of laws to encourage culture",
-        technologies: ["React.js", "Price Comparison", "Route Optimization", "API Integration", "Travel Technology"],
-        link: "https://0fare.com/"
-      },
-      {
-        id: 10,
-        title: "Gestor Cultural - Cultural Management Platform",
-        category: "web",
-        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776472/Screenshot_2025-07-17_at_11.46.51_PM_rde9jy.png",
-        description: "Comprehensive cultural management platform for organizing and promoting cultural events and activities.",
-        technologies: ["PHP", "MySQL", "Event Management", "Cultural Platform"],
-        link: "https://gestorcultural.com.br/"
-      },
-      {
-        id: 11,
-        title: "GreenRaise Agro - Agricultural Technology Platform",
-        category: "web",
-        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776472/Screenshot_2025-07-17_at_11.48.47_PM_xs7jiu.png",
-        description: "Agricultural technology platform connecting farmers with modern farming solutions and market opportunities.",
-        technologies: ["React Next.js", "React", "Agricultural Tech", "Marketplace"],
-        link: "https://greenraiseagro.com"
-      },
-      {
-        id: 12,
-        title: "Editais Gestor Cultural - Cultural Notices Management",
-        category: "web",
-        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776471/Screenshot_2025-07-17_at_11.47.42_PM_m0msj7.png",
-        description: "Specialized platform for managing cultural notices, announcements, and regulatory compliance in the cultural sector.",
-        technologies: ["Laravel", "PHP", "Notice Management", "Regulatory Compliance"],
-        link: "https://editais.gestorcultural.com.br/"
-      },
-      {
-        id: 13,
-        title: "Cremson Publications - Academic Publishing Platform",
-        category: "web",
-        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776473/Screenshot_2025-07-17_at_11.49.15_PM_b07mrc.png",
-        description: "Academic publishing platform for research papers, journals, and scholarly publications with peer review system.",
-        technologies: ["WordPress", "Academic Publishing", "Peer Review System", "Content Management"],
-        link: "https://cremsonpublications.com/"
-      },
-      {
-        id: 14,
-        title: "BeaSport - Sports Equipment & Fitness Platform",
-        category: "web",
-        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776473/Screenshot_2025-07-17_at_11.49.33_PM_ywfi2e.png",
-        description: "E-commerce platform for sports equipment, fitness gear, and athletic wear with expert guidance and training programs.",
-        technologies: ["WordPress", "E-commerce", "Sports Equipment", "Fitness Platform"],
-        link: "https://beasport.in/"
-      },
-      {
-        id: 15,
-        title: "Brilliqs - Business Intelligence & Analytics Platform",
-        category: "web",
-        thumbnail: "https://images.pexels.com/photos/5905708/pexels-photo-5905708.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        description: "Business intelligence and analytics platform providing data-driven insights and decision-making tools for enterprises.",
-        technologies: ["WordPress", "Business Intelligence", "Analytics", "Data Visualization"],
-        link: "https://brilliqs.com/"
-      },
-      {
-        id: 16,
-        title: "The Sugar Factory - Confectionery & Dessert Platform",
-        category: "web",
-        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776474/Screenshot_2025-07-17_at_11.50.09_PM_qu4luc.png",
-        description: "E-commerce platform for premium confectionery, desserts, and sweet treats with custom ordering and delivery.",
-        technologies: ["WordPress", "E-commerce", "Confectionery", "Custom Orders"],
-        link: "https://thesugarfactory.in/"
-      },
-      {
-        id: 17,
-        title: "CapShap - Custom Apparel & Fashion Platform",
-        category: "web",
-        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776474/Screenshot_2025-07-17_at_11.50.30_PM_lrqbxn.png",
-        description: "Custom apparel and fashion platform offering personalized clothing, accessories, and design tools.",
-        technologies: ["Shopify", "Custom Apparel", "Design Tools", "E-commerce"],
-        link: "https://capshap.com/"
-      },
-      {
-        id: 18,
-        title: "Senate Realty - Real Estate & Property Management",
-        category: "web",
-        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776473/Screenshot_2025-07-17_at_11.47.59_PM_z87aak.png",
-        description: "Comprehensive real estate platform for property listings, management, and real estate services.",
-        technologies: ["Laravel", "Real Estate", "Property Management", "Virtual Tours"],
-        link: "https://senaterealty.in/home"
-      },
-      {
-        id: 19,
-        title: "Kruti Foods - Food Processing & Distribution Platform",
-        category: "web",
-        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776473/Screenshot_2025-07-17_at_11.48.14_PM_pz4tck.png",
-        description: "Food processing and distribution platform connecting farmers, processors, and consumers in the food supply chain.",
-        technologies: ["Laravel", "Food Processing", "Supply Chain", "Quality Control"],
-        link: "https://krutifoods.com/"
-      },
-      {
-        id: 20,
-        title: "Connect My Designer",
-        category: "web",
-        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746269920/Screenshot_2025-05-03_at_4.28.00_PM_n2xcfg.png",
-        description: "Platform connecting users with designers for customizable sustainable apparel with artist collaborations.",
-        technologies: ["Next.js", "E-commerce", "Customization Tools", "Artist Marketplace", "Sustainable Products"],
-        link: "https://www.connectmydesigner.com/"
-      },
-      {
-        id: 21,
-        title: "PostPatra - Postal Services Platform",
-        category: "web",
-        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1746273201/Screenshot_2025-05-03_at_5.22.35_PM_pyyzhk.png",
-        description: "Digital platform for postal and courier services, tracking, and delivery management in India.",
-        technologies: ["Next.js", "Web Development", "Tracking System", "Payment Integration", "User Management"],
-        link: "https://www.postpatra.com/"
-      },
-      {
-        id: 22,
-        title: "Abhi Developers - Real Estate Development Company",
-        category: "web",
-        thumbnail: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1752776476/Screenshot_2025-07-17_at_11.48.32_PM_xcuare.png",
-        description: "Real estate development company website showcasing projects, properties, and construction services.",
-        technologies: ["Laravel", "Real Estate Development", "Project Management", "Construction Services"],
-        link: "https://abhidevelopers.com/home"
-      },
-    ];
+    <style>
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
 
-    // DOM Elements
-    const projectsList = document.getElementById('projects-list');
-    const projectDetails = document.getElementById('project-details');
-    const projectContent = document.querySelector('.project-content');
-    const backButton = document.getElementById('back-button');
-    const filterButtons = document.querySelectorAll('.btn-filter');
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+    </style>
 
-    // Initialize the application
-    document.addEventListener('DOMContentLoaded', () => {
-      renderProjects('all');
-      setupEventListeners();
-    });
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
 
-    // Setup Event Listeners
-    function setupEventListeners() {
-      // Filter buttons
-      filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          const filter = button.getAttribute('data-filter');
-
-          // Update active state
-          filterButtons.forEach(btn => btn.classList.remove('active'));
-          button.classList.add('active');
-
-          // Render filtered projects
-          renderProjects(filter);
-        });
-      });
-
-      // Back button
-      backButton.addEventListener('click', showProjectsList);
-    }
-
-    // Render Projects
-    function renderProjects(filter) {
-      projectsList.innerHTML = '';
-
-      let filteredProjects = filter === 'all'
-        ? projectsData
-        : projectsData.filter(project => project.category === filter);
-
-      // Sort projects by tech stack priority
-      filteredProjects.sort((a, b) => {
-        const techA = a.technologies[0]?.toLowerCase() || '';
-        const techB = b.technologies[0]?.toLowerCase() || '';
-
-        // Priority order: React > Laravel/PHP > Next.js > WordPress > Others
-        const getPriority = (tech) => {
-          if (tech.includes('react')) return 1;
-          if (tech.includes('laravel') || tech.includes('php')) return 2;
-          if (tech.includes('next.js') || tech.includes('nextjs')) return 3;
-          if (tech.includes('wordpress') || tech.includes('wp')) return 4;
-          return 5; // Others
-        };
-
-        return getPriority(techA) - getPriority(techB);
-      });
-
-      filteredProjects.forEach(project => {
-        const projectCard = createProjectCard(project);
-        projectsList.appendChild(projectCard);
-      });
-
-      // Add animation
-      const projectCards = document.querySelectorAll('.project-card');
-      projectCards.forEach((card, index) => {
-        setTimeout(() => {
-          card.classList.add('fade-in');
-        }, index * 100);
-      });
-    }
-
-    // Create Project Card
-    function createProjectCard(project) {
-      const col = document.createElement('div');
-      col.className = 'col-sm-6 col-lg-4 mb-4';
-
-      // Get the main tech stack from technologies array
-      const mainTech = project.technologies[0] || 'Web Development';
-
-      col.innerHTML = `
-          <div class="project-card" data-id="${project.id}">
-            <div class="project-card-image" style="background-image: url('${project.thumbnail}')"></div>
-            <div class="project-card-body">
-              <span class="tech-stack">${mainTech}</span>
-              <span class="project-category ${project.category}">${project.category}</span>
-              <h3 class="h5 mb-2">${project.title}</h3>
-              <p class="text-muted">${project.description}</p>
-              <button class="btn-visit" onclick="window.open('${project.link}', '_blank')">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                Visit Site
-              </button>
-            </div>
-          </div>
-        `;
-
-      return col;
-    }
-
-    // Show Project Details
-    function showProjectDetails(projectId) {
-      const project = projectsData.find(p => p.id === projectId);
-
-      if (!project) return;
-
-      // Update page title
-      document.getElementById('page-title').textContent = project.title;
-      document.getElementById('page-subtitle').textContent = `${project.category} project - ${project.year}`;
-
-      // Create project details HTML
-      projectContent.innerHTML = `
-          <div class="project-hero" style="background-image: url('${project.thumbnail}')"></div>
-          <h1 class="display-5 fw-bold mb-4">${project.title}</h1>
-          <p class="lead mb-4">${project.fullDescription}</p>
+        const TEAM_MEMBERS = [
+            {
+                name: "Krushna Bochare",
+                role: "Founder & Digital Marketing Manager",
+                bio: "Founder of FEOFO and digital marketing lead, Krushna drives brand strategy, performance marketing, and creative direction for our clients.",
+                image: "https://feofo.com/wp-content/uploads/2024/06/Untitled-design-70.png",
+                link: null
+            },
+            {
+                name: "Mahesh Darkunde",
+                role: "IT Manager · Web & Apps Developer",
+                bio: "Mahesh leads IT strategy and architecture while building modern web and mobile applications that power client products.",
+                image: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1773131703/Untitled_design_1_munnxi.jpg",
+                link: null
+            },
+            {
+                name: "Amruta Nikam",
+                role: "Full-Stack Web Developer UiUx Creative Designs", 
+                bio: "Amruta is a talented Web Developer with 2+ years of experience in building responsive and user-friendly websites.",
+                image: "https://feofo.com/wp-content/uploads/2025/03/Untitled-design-77.png",
+                link: null
+            },
+            {
+                name: "Rushikesh Darkunde",
+                role: "Project Manager",
+                bio: "Rushikesh owns planning and delivery across projects, coordinating between clients and the technical team to keep roadmaps on track.",
+                image: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1773135817/WhatsApp_Image_2026-03-10_at_3.11.45_PM_vw4l5y.jpg",
+                link: null
+            },
+            {
+                name: "Ganesh Jadhav",
+                role: "Senior Python Developer · Automation, AI & ML",
+                bio: "Ganesh is a senior Python engineer focused on building automation pipelines, AI/ML integrations, and data-driven backends.",
+                image: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1773134411/WhatsApp_Image_2026-03-10_at_1.18.00_PM_f4qhbw.jpg",
+                link: null
+            },
+            {
+                name: "Tushar Kholhe",
+                role: "Web Developer · AWS & DevOps",
+                bio: "Tushar handles web development together with AWS infrastructure, server operations, and database management.",
+                image: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1773132025/Untitled_design_2_id9xmn.jpg",
+                link: null
+            },
+            {
+                name: "Rohit Weer",
+                role: "Junior Web Developer",
+                bio: "Rohit is a junior web developer contributing to modern, responsive frontends and implementation of UI components.",
+                image: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1773131705/ChatGPT_Image_Mar_10_2026_01_41_02_PM_tovi2i.png",
+                link: null
+            },
+            {
+                name: "Aniket Shelke",
+                role: "Web Developer · OOP & Systems Design",
+                bio: "Aniket focuses on clean web architectures, object‑oriented patterns, and system design for scalable applications.",
+                image: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1773134636/Untitled_design_3_vfbikv.jpg",
+                link: null
+            },
+            {
+                name: "Gaurav Ghorpade",
+                role: "Senior Web Developer & Mobile App Developer",
+                bio: "Gaurav is a senior engineer working across web and mobile, building performant UIs and production‑ready apps.",
+                image: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1773135382/ChatGPT_Image_Mar_10_2026_03_05_56_PM_zh8yfp.png",
+                link: null
+            },
+            {
+                name: "Vikas Darkunde",
+                role: "Business Development Manager",
+                bio: "Vikas drives partnerships, client relationships, and new business opportunities to grow FEOFO’s portfolio.",
+                image: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1773133192/1736055474543.jpg_1_m2hioa.jpg",
+                link: null
+            },
           
-          <div class="project-info">
-            <div>
-              <h3 class="h5 mb-3">Project Details</h3>
-              <p><strong>Client:</strong> ${project.client}</p>
-              <p><strong>Duration:</strong> ${project.duration}</p>
-              <p><strong>Year:</strong> ${project.year}</p>
-              <p><strong>Project URL:</strong> <a href="${project.link}" target="_blank">${project.link}</a></p>
-            </div>
-            <div>
-              <h3 class="h5 mb-3">Technologies Used</h3>
-              <ul>
-                ${project.technologies.map(tech => `<li>${tech}</li>`).join('')}
-              </ul>
-            </div>
-          </div>
-          
+           
+            {
+                name: "Aniket Shinde",
+                role: "Photo & Video Editor · Social Media Manager",
+                bio: "Aniket Shinde manages photo and video editing for campaigns while handling social media calendars, posting, and performance tracking.",
+                image: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1773135485/Screenshot_2026-03-10_at_3.07.57_PM_sncueg.png",
+                link: null
+            },
+            {
+                name: "Apurvi Gupta",
+                role: "Software Developer · Automation Expert",
+                bio: "Apurvi builds software solutions with a strong focus on automation, streamlining workflows and integrating tools to reduce manual effort.",
+                image: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1773136600/Screenshot_2026-03-10_at_3.26.32_PM_raraea.png",
+                link: null
+            },
+            {
+                name: "Satkar Chaudhri",
+                role: "Camera & Digital Equipment · Photography",
+                bio: "Satkar takes care of on‑ground shoots, camera and digital equipment, and high‑quality photography for brand assets.",
+                // image: "https://feofo.com/wp-content/uploads/2025/10/Untitled-design-21.png",
+                link: null
+            },
+            {
+                name: "Nikita P",
+                role: "Senior Web & Backend Developer",
+                bio: "Nikita is a senior full‑stack developer owning complex backend logic as well as robust, maintainable web frontends.",
+                // image: "https://feofo.com/wp-content/uploads/2025/10/Untitled-design-21.png",
+                link: null
+            }
          
-        `;
-      // <h3 class="h4 mt-5 mb-4">Project Gallery</h3>
-      //   <div class="project-gallery">
-      //     ${project.gallery.map(image => `
-      //       <div class="gallery-image">
-      //         <img src="${image}" alt="${project.title}">
-      //       </div>
-      //     `).join('')}
-      //   </div>
-      // Hide projects list, show details
-      projectsList.classList.add('fade-out');
-      setTimeout(() => {
-        projectsList.classList.add('d-none');
-        projectDetails.classList.remove('d-none');
-        setTimeout(() => {
-          projectDetails.classList.add('visible');
-        }, 50);
-      }, 300);
-    }
+        ];
 
-    // Show Projects List
-    function showProjectsList() {
-      // Reset page title
-      document.getElementById('page-title').textContent = 'My Projects';
-      document.getElementById('page-subtitle').textContent = 'A showcase of my recent work and expertise';
+        const PORTFOLIO_PROJECTS = [
+            // ——— Highlighted (top) ———
+            { name: "GreenRaise Agro - Agricultural Technology Platform", description: "Agricultural technology platform connecting farmers with modern farming solutions and market opportunities.", tags: ["React", "Next.js"], url: "https://greenraiseagro.com/", urlDisplay: "greenraiseagro.com" },
+            { name: "Kruti Foods - Food Processing & Distribution Platform", description: "Food processing and distribution platform connecting farmers, processors, and consumers in the food supply chain.", tags: ["Laravel", "Web"], url: "https://krutifoods.com/", urlDisplay: "krutifoods.com" },
+            { name: "PostPatra - Postal Services Platform", description: "Digital platform for postal and courier services, tracking, and delivery management in India.", tags: ["Next.js", "Web"], url: "https://www.postpatra.com/", urlDisplay: "postpatra.com" },
+            { name: "Cremson Publications - Academic Publishing Platform", description: "Academic publishing platform for research papers, journals, and scholarly publications with peer review system.", tags: ["WordPress", "Web"], url: "https://www.cremsonpublications.com/", urlDisplay: "cremsonpublications.com" },
+            { name: "The Sugar Factory - Confectionery & Dessert Platform", description: "E-commerce platform for premium confectionery, desserts, and sweet treats with custom ordering and delivery.", tags: ["WordPress", "Web"], url: "https://thesugarfactory.in/", urlDisplay: "thesugarfactory.in" },
+            { name: "Sell My Dyson - Specialized Resale Platform", description: "Specialized e-commerce platform for buying and selling pre-owned Dyson products in the UK.", tags: ["E-commerce", "Web"], url: "https://sellmydyson.co.uk/", urlDisplay: "sellmydyson.co.uk" },
+            { name: "Health Commune", description: "Health community platform connecting doctors, patients, and wellness resources with modern UX.", tags: ["Healthcare", "Community"], url: "https://healthcommune.in/", urlDisplay: "healthcommune.in" },
+            { name: "Atulya Tech", description: "Technology company website with service portfolio, team showcase, and modern corporate design.", tags: ["Tech", "Corporate"], url: "https://atulyatech.com/", urlDisplay: "atulyatech.com" },
+            { name: "Freedom Group IT", description: "IT solutions and technology services company website.", tags: ["IT", "Tech"], url: "https://freedomgroupit.com/", urlDisplay: "freedomgroupit.com" },
+            { name: "CapShap - Custom Apparel & Fashion Platform", description: "Custom apparel and fashion platform offering personalized clothing, accessories, and design tools.", tags: ["Shopify", "Web"], url: "https://capshap.com/", urlDisplay: "capshap.com" },
 
-      // Hide details, show list
-      projectDetails.classList.remove('visible');
-      setTimeout(() => {
-        projectDetails.classList.add('d-none');
-        projectsList.classList.remove('d-none');
-        projectsList.classList.remove('fade-out');
-      }, 300);
-    }
-  </script>
+            // ——— Other projects ———
+            { name: "Einterio - Online Interior Design Platform", description: "Virtual interior design service platform providing 3D design visualization, expert designer collaboration, and furniture recommendations.", tags: ["React", "Laravel"], url: "https://einterio.com/", urlDisplay: "einterio.com" },
+            { name: "MHT CET Mock Test Platform", description: "Complete online platform for MHT-CET exam preparation with practice tests, performance analysis and comparative ranking.", tags: ["PHP", "Web"], url: "https://www.mhtcetmocktest.com/", urlDisplay: "mhtcetmocktest.com" },
+            { name: "Gestor Cultural - Cultural Management Platform", description: "Comprehensive cultural management platform for organizing and promoting cultural events and activities.", tags: ["PHP", "Web"], url: "https://gestorcultural.com.br/", urlDisplay: "gestorcultural.com.br" },
+            { name: "Editais Gestor Cultural - Cultural Notices Management", description: "Specialized platform for managing cultural notices, announcements, and regulatory compliance in the cultural sector.", tags: ["Laravel", "Web"], url: "https://editais.gestorcultural.com.br/", urlDisplay: "editais.gestorcultural.com.br" },
+            { name: "Senate Realty - Real Estate & Property Management", description: "Comprehensive real estate platform for property listings, management, and real estate services.", tags: ["Laravel", "Web"], url: "https://senaterealty.in/home", urlDisplay: "senaterealty.in" },
+            { name: "Abhi Developers - Real Estate Development Company", description: "Real estate development company website showcasing projects, properties, and construction services.", tags: ["Laravel", "Web"], url: "https://abhidevelopers.com/home", urlDisplay: "abhidevelopers.com" },
+            { name: "MKT78 - Digital Marketing Agency", description: "Website for a digital marketing agency specializing in SEO, content marketing, and online advertising solutions.", tags: ["WordPress", "Web"], url: "https://mkt78.com/", urlDisplay: "mkt78.com" },
+            { name: "Brilliqs - Business Intelligence & Analytics Platform", description: "Business intelligence and analytics platform providing data-driven insights and decision-making tools for enterprises.", tags: ["WordPress", "Web"], url: "https://brilliqs.com/", urlDisplay: "brilliqs.com" },
+            { name: "Samarpan Wellness Retreat", description: "Wellness and retreat center website with booking integration, service showcase, and SEO-optimized content.", tags: ["Healthcare", "Wellness"], url: "https://samarpanwellnessretreat.com/", urlDisplay: "samarpanwellnessretreat.com" },
+            { name: "Baravkar Clinic", description: "Medical clinic website with doctor profiles, services, and patient-friendly appointment booking system.", tags: ["Medical", "Clinic"], url: "https://baravkarclinic.com/", urlDisplay: "baravkarclinic.com" },
+            { name: "Dentalios Clinic", description: "Dental clinic website with treatment showcase, patient care information, and appointment booking.", tags: ["Dental", "Healthcare"], url: "https://dentaliosclinic.com/", urlDisplay: "dentaliosclinic.com" },
+            { name: "Inscience Health", description: "Healthcare and wellness platform with modern design and patient services.", tags: ["Healthcare", "Web"], url: "https://insciencehealth.com/", urlDisplay: "insciencehealth.com" },
+            { name: "Meditree Healthcare", description: "Healthcare services website with treatment information and patient resources.", tags: ["Healthcare", "Web"], url: "https://meditreehealthcare.in/", urlDisplay: "meditreehealthcare.in" },
+            { name: "Dental Clinic Wakad", description: "Dental clinic website with SEO-focused local marketing, treatment pages, and patient reviews integration.", tags: ["Dental", "Local SEO"], url: "https://dentalclinicwakad.com/", urlDisplay: "dentalclinicwakad.com" },
+            { name: "Dentist In Wakad", description: "Dental practice website serving Wakad area with comprehensive dental care information.", tags: ["Dental", "Healthcare"], url: "https://dentistinwakad.com/", urlDisplay: "dentistinwakad.com" },
+            { name: "House Of Bliss Water", description: "Water purification and wellness products website with product showcase and ordering.", tags: ["E-commerce", "Water"], url: "https://houseofblisswater.com/", urlDisplay: "houseofblisswater.com" },
+            { name: "SK Fitness 4 All", description: "Fitness center website with class schedules, membership plans, trainer profiles, and online registration.", tags: ["Fitness", "Membership"], url: "https://skfitness4all.com/", urlDisplay: "skfitness4all.com" },
+            { name: "UpDail", description: "Digital platform and daily updates service.", tags: ["Web", "Platform"], url: "https://updail.com/", urlDisplay: "updail.com" },
+            { name: "Sarkari Saathi (Live)", description: "Comprehensive portal for government schemes, services, and information for Indian citizens.", tags: ["Government", "Portal"], url: "https://sarkarisaathi.com/", urlDisplay: "sarkarisaathi.com" },
+            { name: "QDigi Service Center", description: "Digital service center website with repair and support services.", tags: ["Services", "Tech"], url: "https://qdigiservicecenter.com/", urlDisplay: "qdigiservicecenter.com" },
+            { name: "FEOFO.com", description: "FEOFO — Digital & IT Agency. Digital marketing, web development, and creative solutions.", tags: ["Agency", "Web"], url: "https://feofo.com/", urlDisplay: "feofo.com" },
+            { name: "Skyliths", description: "Full-stack tech platform with algo trading and financial tools ecosystem.", tags: ["FinTech", "Web"], url: "https://skyliths.com/", urlDisplay: "skyliths.com" },
+            { name: "Skylith Algo Trading", description: "Automated algorithmic trading dashboard with live market data integration and strategy management.", tags: ["Algo Trading", "React"], url: "https://algo.skylith.cloud/", urlDisplay: "algo.skylith.cloud" },
+            { name: "Skylith USDT Exchange", description: "Cryptocurrency USDT exchange and wallet management platform with real-time rates.", tags: ["Crypto", "Web App"], url: "https://usdt.skylith.cloud/", urlDisplay: "usdt.skylith.cloud" },
+            { name: "WaysNx", description: "Modern business web platform with comprehensive service presentation and lead capture.", tags: ["Business", "Web"], url: "https://waysnx.com/", urlDisplay: "waysnx.com" },
+            // ——— New (at end) ———
+            { name: "XFundingFlow", description: "Funding and investment flow platform.", tags: ["Web", "FinTech"], url: "https://xfundingflow.com/", urlDisplay: "xfundingflow.com" },
+            { name: "NxtOk", description: "Digital platform and services.", tags: ["Web", "Platform"], url: "https://nxtok.com/", urlDisplay: "nxtok.com" },
+            { name: "ACA", description: "Academic institution website.", tags: ["Education", "Web"], url: "https://aca.edu.in/", urlDisplay: "aca.edu.in" },
+            { name: "College Of Engineering Ambajogai (COEA)", description: "Mahatma Basaveshwar Education Society's College of Engineering, Ambajogai — premier engineering college in Marathwada with UG/PG programs, campus tour, and admissions.", tags: ["Education", "Institution"], url: "https://www.coea.ac.in/", urlDisplay: "coea.ac.in" }
+        ];
+
+        function renderTeam() {
+            const grid = document.getElementById('teamGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            TEAM_MEMBERS.forEach(function (m, index) {
+                const card = document.createElement('div');
+                card.className = 'team-card reveal';
+                card.dataset.index = index;
+                card.innerHTML =
+                    '<div class="team-avatar border">' +
+                        '<img src="' + m.image + '" alt="' + m.name.replace(/"/g, '&quot;') + '">' +
+                    '</div>' +
+                    '<div>' +
+                        '<div class="team-name">' + m.name + '</div>' +
+                        '<div class="team-role">' + m.role + '</div>' +
+                    '</div>' +
+                    '<div class="team-bio">' + m.bio + '</div>' +
+                    '<div class="team-meta">' +
+                        (m.link ? '<a class="team-link" href="' + m.link + '" target="_blank" rel="noopener">VIEW PROFILE →</a>' : '<span class="text-muted" style="font-size:.7rem;">CORE TEAM</span>') +
+                        '<span class="text-muted" style="font-size:.7rem;">FEOFO TEAM</span>' +
+                    '</div>';
+                grid.appendChild(card);
+            });
+        }
+
+        function renderPortfolio() {
+            const grid = document.getElementById('portfolioGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            const VIEW_MARGIN = 200;
+            const UNLOAD_MARGIN = 400;
+
+            function buildItem(p, index) {
+                const tagsHtml = p.tags.map(function (t) { return '<span class="ptag">' + t + '</span>'; }).join('');
+                const div = document.createElement('div');
+                div.className = 'portfolio-item reveal';
+                div.dataset.index = index;
+                div.innerHTML =
+                    '<div class="portfolio-iframe-wrap">' +
+                    '<div class="iframe-overlay"><div class="dot-r"></div><div class="dot-y"></div><div class="dot-g"></div><span class="iframe-url">' + (p.urlDisplay || p.url) + '</span></div>' +
+                    '<iframe data-src="' + p.url + '" title="' + p.name.replace(/"/g, '&quot;') + '" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>' +
+                    '</div>' +
+                    '<div class="portfolio-info">' +
+                    '<div><div class="portfolio-name">' + p.name + '</div><div class="portfolio-desc">' + p.description + '</div><div class="port-tags">' + tagsHtml + '</div></div>' +
+                    '<a class="portfolio-link" href="' + p.url + '" target="_blank" rel="noopener">Visit Live →</a>' +
+                    '</div>';
+                return div;
+            }
+
+            PORTFOLIO_PROJECTS.forEach(function (p, i) {
+                grid.appendChild(buildItem(p, i));
+            });
+
+            var iframeObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    var wrap = entry.target;
+                    var iframe = wrap.querySelector('iframe');
+                    if (!iframe) return;
+                    if (entry.isIntersecting) {
+                        var src = iframe.getAttribute('data-src');
+                        if (src && iframe.getAttribute('src') !== src) {
+                            iframe.setAttribute('src', src);
+                        }
+                    } else {
+                        var rect = wrap.getBoundingClientRect();
+                        if (rect.bottom < -UNLOAD_MARGIN || rect.top > window.innerHeight + UNLOAD_MARGIN) {
+                            iframe.removeAttribute('src');
+                        }
+                    }
+                });
+            }, { rootMargin: VIEW_MARGIN + 'px ' + VIEW_MARGIN + 'px', threshold: 0 });
+
+            grid.querySelectorAll('.portfolio-iframe-wrap').forEach(function (wrap) {
+                iframeObserver.observe(wrap);
+            });
+
+            setTimeout(initReveal, 50);
+        }
+
+        // ── STARFIELD ──
+        (function () {
+            const canvas = document.getElementById('starfield');
+            const ctx = canvas.getContext('2d');
+            let stars = [];
+            function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+            resize(); window.addEventListener('resize', resize);
+            for (let i = 0; i < 200; i++) {
+                stars.push({
+                    x: Math.random() * window.innerWidth,
+                    y: Math.random() * window.innerHeight,
+                    r: Math.random() * 1.2 + .2,
+                    a: Math.random(),
+                    s: Math.random() * .003 + .001
+                });
+            }
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                stars.forEach(s => {
+                    s.a += s.s; if (s.a > 1 || s.a < 0) s.s *= -1;
+                    ctx.beginPath();
+                    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(0,245,255,${s.a * 0.6})`;
+                    ctx.fill();
+                });
+                requestAnimationFrame(draw);
+            }
+            draw();
+        })();
+
+        // ── NAVBAR SCROLL ──
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 30);
+        });
+
+        // ── SECTION NAVIGATION ──
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            document.querySelectorAll('.nav-tab, .mobile-tab').forEach(t => {
+                t.classList.toggle('active', t.getAttribute('onclick') && t.getAttribute('onclick').includes(id));
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(initReveal, 100);
+        }
+
+        // ── SCROLL REVEAL ──
+        function initReveal() {
+            const reveals = document.querySelectorAll('.section.active .reveal:not(.visible)');
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach((e, i) => {
+                    if (e.isIntersecting) {
+                        setTimeout(() => e.target.classList.add('visible'), i * 80);
+                        obs.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            reveals.forEach(r => obs.observe(r));
+            // Also trigger visible ones immediately
+            setTimeout(() => {
+                document.querySelectorAll('.section.active .reveal').forEach((el, i) => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight) {
+                        setTimeout(() => el.classList.add('visible'), i * 60);
+                    }
+                });
+            }, 50);
+        }
+
+        // ── SERVICE FILTER ──
+        function filterServices(cat, btn) {
+            document.querySelectorAll('.scat-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.service-card').forEach(card => {
+                const show = cat === 'all' || card.dataset.cat === cat;
+                gsap.to(card, {
+                    opacity: show ? 1 : 0.15,
+                    scale: show ? 1 : 0.96,
+                    duration: .3,
+                    ease: 'power2.out'
+                });
+                card.style.pointerEvents = show ? 'auto' : 'none';
+            });
+        }
+
+        // ── MOBILE MENU ──
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('open');
+        }
+
+        // ── INIT ──
+        window.addEventListener('load', () => {
+            renderTeam();
+            renderPortfolio();
+            initReveal();
+        });
+
+        // ── SCROLL LISTENER ──
+        window.addEventListener('scroll', initReveal);
+    </script>
 </body>
 
 </html>
