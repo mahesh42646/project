@@ -12,7 +12,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Syne:wght@400;600;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous" />
     <style>
         :root {
             --neon-cyan: #3810FF;
@@ -50,21 +51,26 @@
             --starfield-opacity: 0.15;
             --noise-opacity: 0.15;
         }
+
         [data-theme="light"] .feature-banner {
             background: linear-gradient(135deg, rgba(56, 16, 255, 0.04), rgba(105, 81, 224, 0.04));
             border-color: rgba(56, 16, 255, 0.12);
         }
+
         [data-theme="light"] .contact-section {
             background: linear-gradient(135deg, rgba(56, 16, 255, 0.03), rgba(105, 81, 224, 0.03));
             border-color: rgba(56, 16, 255, 0.08);
         }
+
         [data-theme="light"] .founder-card {
             background: linear-gradient(135deg, rgba(56, 16, 255, 0.06), rgba(105, 81, 224, 0.06));
             border-color: rgba(56, 16, 255, 0.15);
         }
+
         [data-theme="light"] .mobile-menu {
             background: rgba(240, 244, 248, 0.98);
         }
+
         [data-theme="light"] .animated-border-inner {
             background: var(--page-bg);
         }
@@ -86,6 +92,7 @@
             overflow-x: hidden;
             transition: background 0.4s ease, color 0.4s ease;
         }
+
         .display-flex {
             display: flex;
             gap: 16px;
@@ -274,16 +281,39 @@
             transition: all .3s ease;
             margin-left: 8px;
         }
+
         .theme-toggle:hover {
             color: var(--neon-cyan);
             border-color: var(--neon-cyan);
         }
-        .theme-toggle .icon-light { display: none; }
-        .theme-toggle .icon-dark { display: inline-flex; align-items: center; gap: 6px; }
-        [data-theme="light"] .theme-toggle .icon-dark { display: none; }
-        [data-theme="light"] .theme-toggle .icon-light { display: inline-flex; align-items: center; gap: 6px; }
-        .text-muted { color: var(--page-text-muted); }
-        .text-primary { color: var(--page-text); }
+
+        .theme-toggle .icon-light {
+            display: none;
+        }
+
+        .theme-toggle .icon-dark {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        [data-theme="light"] .theme-toggle .icon-dark {
+            display: none;
+        }
+
+        [data-theme="light"] .theme-toggle .icon-light {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .text-muted {
+            color: var(--page-text-muted);
+        }
+
+        .text-primary {
+            color: var(--page-text);
+        }
 
         /* SECTIONS */
         .section {
@@ -328,7 +358,11 @@
             }
         }
 
-        .hero-bg-orb { opacity: var(--orb-opacity); transition: opacity 0.4s ease; }
+        .hero-bg-orb {
+            opacity: var(--orb-opacity);
+            transition: opacity 0.4s ease;
+        }
+
         .orb1 {
             width: 600px;
             height: 600px;
@@ -648,9 +682,20 @@
             position: relative;
             z-index: 1;
         }
-        .service-icon i, .val-icon i { color: var(--neon-cyan); }
-        .founder-avatar i { font-size: 2.5rem; color: #fff; }
-        .clink i { margin-right: 8px; }
+
+        .service-icon i,
+        .val-icon i {
+            color: var(--neon-cyan);
+        }
+
+        .founder-avatar i {
+            font-size: 2.5rem;
+            color: #fff;
+        }
+
+        .clink i {
+            margin-right: 8px;
+        }
 
         .service-card-title {
             font-family: 'Orbitron', sans-serif;
@@ -757,7 +802,7 @@
             width: 100%;
             border-radius: 16px;
             overflow: hidden;
-            background: radial-gradient(circle at 20% 0%, rgba(0,245,255,.25), transparent 60%);
+            background: radial-gradient(circle at 20% 0%, rgba(0, 245, 255, .25), transparent 60%);
         }
 
         .team-avatar img {
@@ -1008,7 +1053,10 @@
             border-radius: 20px;
             margin-left: 8px;
         }
-        [data-theme="light"] .iframe-url { background: rgba(0, 0, 0, 0.08); }
+
+        [data-theme="light"] .iframe-url {
+            background: rgba(0, 0, 0, 0.08);
+        }
 
         .portfolio-info {
             padding: 28px 32px;
@@ -1312,7 +1360,7 @@
         .mobile-menu.open {
             display: flex;
         }
-       
+
 
         .mobile-tab {
             font-family: 'Orbitron', sans-serif;
@@ -1383,9 +1431,9 @@
     <nav id="navbar">
         <div class="nav-inner">
             <div class="nav-logo grad-text" onclick="showSection('services')" style="cursor:pointer;">
-                <img 
-                style="width: 300px; height: auto;"
-                src="https://res.cloudinary.com/dahbnl1y3/image/upload/v1773118315/Feofo_Digital_Marketing_gaqhoq.png" alt="Feofo Digital Marketing">
+                <img style="width: 300px; height: auto;"
+                    src="https://res.cloudinary.com/dahbnl1y3/image/upload/v1773118315/Feofo_Digital_Marketing_gaqhoq.png"
+                    alt="Feofo Digital Marketing">
             </div>
             <div class="nav-tabs">
                 <div class="nav-tab active" onclick="showSection('services')">Services</div>
@@ -1420,8 +1468,8 @@
             <div class="section-header reveal">
                 <!-- <span class="section-badge">// What We Do</span> -->
                 <h2 class="section-title">Our <span class="grad-text">Services</span></h2>
-                <p
-                    class="text-muted" style="margin-top:16px;font-size:.95rem;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.7;">
+                <p class="text-muted"
+                    style="margin-top:16px;font-size:.95rem;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.7;">
                     From creative content to enterprise software — FEOFO delivers every digital solution your business
                     needs to thrive in 2025 and beyond.
                 </p>
@@ -1442,7 +1490,8 @@
                 <!-- CREATIVE & MEDIA -->
                 <div class="service-card reveal" data-cat="creative">
                     <div class="service-icon"
-                        style="background:linear-gradient(135deg,rgba(0,245,255,0.15),rgba(0,245,255,0.05));"><i class="fa-solid fa-mobile-screen"></i></div>
+                        style="background:linear-gradient(135deg,rgba(0,245,255,0.15),rgba(0,245,255,0.05));"><i
+                            class="fa-solid fa-mobile-screen"></i></div>
                     <div class="service-card-title">Social Media Management</div>
                     <div class="service-card-desc">End-to-end social media strategy, content creation, scheduling, and
                         community management. We grow your brand presence across Instagram, Facebook, LinkedIn, Twitter,
@@ -1454,7 +1503,8 @@
 
                 <div class="service-card reveal" data-cat="creative">
                     <div class="service-icon"
-                        style="background:linear-gradient(135deg,rgba(255,0,229,0.15),rgba(255,0,229,0.05));"><i class="fa-solid fa-palette"></i></div>
+                        style="background:linear-gradient(135deg,rgba(255,0,229,0.15),rgba(255,0,229,0.05));"><i
+                            class="fa-solid fa-palette"></i></div>
                     <div class="service-card-title">Creative Design & Graphics</div>
                     <div class="service-card-desc">Brand identity, logo design, social media creatives, banners,
                         infographics, and print materials. Our designers craft visually stunning graphics that
@@ -1466,7 +1516,8 @@
 
                 <div class="service-card reveal" data-cat="creative">
                     <div class="service-icon"
-                        style="background:linear-gradient(135deg,rgba(255,215,0,0.15),rgba(255,215,0,0.05));"><i class="fa-solid fa-video"></i></div>
+                        style="background:linear-gradient(135deg,rgba(255,215,0,0.15),rgba(255,215,0,0.05));"><i
+                            class="fa-solid fa-video"></i></div>
                     <div class="service-card-title">Video & Photo Editing</div>
                     <div class="service-card-desc">Professional video editing for Reels, YouTube, ads, and corporate
                         content. Photo retouching, color grading, product photography editing. We also handle complete
@@ -1478,7 +1529,8 @@
 
                 <div class="service-card reveal" data-cat="creative">
                     <div class="service-icon"
-                        style="background:linear-gradient(135deg,rgba(0,245,255,0.15),rgba(255,0,229,0.1));"><i class="fa-solid fa-box"></i></div>
+                        style="background:linear-gradient(135deg,rgba(0,245,255,0.15),rgba(255,0,229,0.1));"><i
+                            class="fa-solid fa-box"></i></div>
                     <div class="service-card-title">Packaging & Product Design</div>
                     <div class="service-card-desc">Standout packaging design that captures attention on shelves and
                         online listings. From concept to print-ready artwork — boxes, labels, bags, bottles. We design
@@ -1490,7 +1542,8 @@
                 <!-- ADS & MARKETING -->
                 <div class="service-card reveal" data-cat="ads">
                     <div class="service-icon"
-                        style="background:linear-gradient(135deg,rgba(255,100,0,0.15),rgba(255,100,0,0.05));"><i class="fa-solid fa-chart-line"></i></div>
+                        style="background:linear-gradient(135deg,rgba(255,100,0,0.15),rgba(255,100,0,0.05));"><i
+                            class="fa-solid fa-chart-line"></i></div>
                     <div class="service-card-title">Meta, Google & LinkedIn Ads</div>
                     <div class="service-card-desc">Full-funnel paid advertising campaigns on Meta (Facebook &
                         Instagram), Google Search & Display, LinkedIn, YouTube, and more. We handle campaign
@@ -1503,7 +1556,8 @@
                 <!-- AUTOMATION -->
                 <div class="service-card reveal" data-cat="automation">
                     <div class="service-icon"
-                        style="background:linear-gradient(135deg,rgba(0,255,150,0.15),rgba(0,255,150,0.05));"><i class="fa-solid fa-robot"></i></div>
+                        style="background:linear-gradient(135deg,rgba(0,255,150,0.15),rgba(0,255,150,0.05));"><i
+                            class="fa-solid fa-robot"></i></div>
                     <div class="service-card-title">WhatsApp & Social Automation</div>
                     <div class="service-card-desc">Automated WhatsApp marketing campaigns, chatbots, and business
                         workflows. Social media auto-posting, DM automation, lead nurturing sequences, and CRM
@@ -1516,7 +1570,8 @@
                 <!-- TECH & DEV -->
                 <div class="service-card reveal" data-cat="tech">
                     <div class="service-icon"
-                        style="background:linear-gradient(135deg,rgba(0,200,255,0.15),rgba(0,100,255,0.1));"><i class="fa-solid fa-laptop-code"></i></div>
+                        style="background:linear-gradient(135deg,rgba(0,200,255,0.15),rgba(0,100,255,0.1));"><i
+                            class="fa-solid fa-laptop-code"></i></div>
                     <div class="service-card-title">Websites & Mobile Apps</div>
                     <div class="service-card-desc">Custom websites, PWAs, and mobile applications (iOS & Android). From
                         landing pages and business websites to complex web platforms with user authentication,
@@ -1527,7 +1582,8 @@
 
                 <div class="service-card reveal" data-cat="tech">
                     <div class="service-icon"
-                        style="background:linear-gradient(135deg,rgba(150,0,255,0.15),rgba(150,0,255,0.05));"><i class="fa-solid fa-building"></i></div>
+                        style="background:linear-gradient(135deg,rgba(150,0,255,0.15),rgba(150,0,255,0.05));"><i
+                            class="fa-solid fa-building"></i></div>
                     <div class="service-card-title">CRM, POS & Business Software</div>
                     <div class="service-card-desc">Custom CRM systems, Point-of-Sale software, billing platforms,
                         inventory management, ERP solutions, and complete business management suites. We build the
@@ -1538,7 +1594,8 @@
 
                 <div class="service-card reveal" data-cat="tech">
                     <div class="service-icon"
-                        style="background:linear-gradient(135deg,rgba(255,215,0,0.15),rgba(255,150,0,0.1));"><i class="fa-solid fa-chart-line"></i></div>
+                        style="background:linear-gradient(135deg,rgba(255,215,0,0.15),rgba(255,150,0,0.1));"><i
+                            class="fa-solid fa-chart-line"></i></div>
                     <div class="service-card-title">Data, Analytics & Dashboards</div>
                     <div class="service-card-desc">Business intelligence dashboards, data visualization, analytics
                         setup, and reporting automation. We turn your raw data into actionable insights with beautiful
@@ -1549,7 +1606,8 @@
 
                 <div class="service-card reveal" data-cat="tech">
                     <div class="service-icon"
-                        style="background:linear-gradient(135deg,rgba(0,255,200,0.15),rgba(0,200,100,0.1));"><i class="fa-solid fa-server"></i></div>
+                        style="background:linear-gradient(135deg,rgba(0,255,200,0.15),rgba(0,200,100,0.1));"><i
+                            class="fa-solid fa-server"></i></div>
                     <div class="service-card-title">Server & Self-Hosting Solutions</div>
                     <div class="service-card-desc">Custom server setup, self-hosted email servers, local backup systems,
                         VPS management, Docker deployments, data migration, and cloud infrastructure. Own your
@@ -1561,7 +1619,8 @@
                 <!-- E-COMMERCE -->
                 <div class="service-card reveal" data-cat="ecom">
                     <div class="service-icon"
-                        style="background:linear-gradient(135deg,rgba(0,200,100,0.15),rgba(0,245,255,0.08));"><i class="fa-solid fa-cart-shopping"></i></div>
+                        style="background:linear-gradient(135deg,rgba(0,200,100,0.15),rgba(0,245,255,0.08));"><i
+                            class="fa-solid fa-cart-shopping"></i></div>
                     <div class="service-card-title">E-Commerce Store Setup</div>
                     <div class="service-card-desc">Complete store setup and management for Shopify, Amazon, Flipkart,
                         Meesho, Blinkit, Zepto, and other platforms. Product listing optimization, inventory setup,
@@ -1573,7 +1632,8 @@
 
                 <div class="service-card reveal" data-cat="ecom">
                     <div class="service-icon"
-                        style="background:linear-gradient(135deg,rgba(255,80,80,0.15),rgba(255,80,80,0.05));"><i class="fa-solid fa-magnifying-glass"></i></div>
+                        style="background:linear-gradient(135deg,rgba(255,80,80,0.15),rgba(255,80,80,0.05));"><i
+                            class="fa-solid fa-magnifying-glass"></i></div>
                     <div class="service-card-title">SEO & Google My Business</div>
                     <div class="service-card-desc">Technical SEO, on-page optimization, local SEO, and Google My
                         Business setup & management. We get your business ranking on Google with proven white-hat
@@ -1593,7 +1653,8 @@
                         Why Choose FEOFO?</span>
                     <h3 style="font-family:'Orbitron',sans-serif;font-size:2rem;font-weight:900;margin:16px 0;">One
                         Agency.<br /><span class="grad-text">All Solutions.</span></h3>
-                    <p class="text-muted" style="line-height:1.8;font-size:.9rem;">Stop juggling 5 different agencies. FEOFO
+                    <p class="text-muted" style="line-height:1.8;font-size:.9rem;">Stop juggling 5 different agencies.
+                        FEOFO
                         handles everything — your creatives, your code, your ads, your automation, your server, your
                         analytics. One team. One invoice. One vision. Maximum results.</p>
                     <button class="btn-primary" style="margin-top:24px;"
@@ -1611,7 +1672,8 @@
                         style="padding:16px;background:rgba(255,0,229,0.05);border-radius:12px;border:1px solid rgba(255,0,229,0.1);text-align:center;">
                         <div style="font-family:'Orbitron',sans-serif;font-size:1.5rem;color:var(--neon-magenta);">5+
                         </div>
-                        <div class="text-muted" style="font-size:.7rem;margin-top:4px;">Years in Industry (since 2020)</div>
+                        <div class="text-muted" style="font-size:.7rem;margin-top:4px;">Years in Industry (since 2020)
+                        </div>
                     </div>
                     <div
                         style="padding:16px;background:rgba(255,215,0,0.05);border-radius:12px;border:1px solid rgba(255,215,0,0.1);text-align:center;">
@@ -1636,8 +1698,10 @@
             <div class="section-header reveal">
                 <span class="section-badge">// Leadership</span>
                 <h2 class="section-title">Meet the <span class="grad-text">Team</span></h2>
-                <p class="text-muted" style="margin-top:16px;font-size:.95rem;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.7;">
-                    A compact core team leading design, development, and growth — built to ship fast and own outcomes end-to-end.
+                <p class="text-muted"
+                    style="margin-top:16px;font-size:.95rem;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.7;">
+                    A compact core team leading design, development, and growth — built to ship fast and own outcomes
+                    end-to-end.
                 </p>
             </div>
 
@@ -1691,7 +1755,9 @@
                                 style="background:var(--neon-cyan);box-shadow:0 0 10px var(--neon-cyan);"></div>
                             <!-- <div class="t-year">2023–Now</div> -->
                             <div class="t-title">Full-Scale Agency</div>
-                            <div class="t-text">FEOFO evolves into a comprehensive digital agency with 150+ happy clients and projects delivered across 12+ service categories, maintaining a 5-star reputation.</div>
+                            <div class="t-text">FEOFO evolves into a comprehensive digital agency with 150+ happy
+                                clients and projects delivered across 12+ service categories, maintaining a 5-star
+                                reputation.</div>
                         </div>
                     </div>
                 </div>
@@ -1699,9 +1765,11 @@
                 <!-- FOUNDER + VALUES -->
                 <div>
                     <div class="founder-card reveal" style="margin-bottom:30px;">
-                        <div class="founder-avatar rounded-full" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
-                            <img src="https://feofo.com/wp-content/uploads/2025/10/Untitled-design-21.png" alt="Krushna Bochare">
-                        
+                        <div class="founder-avatar rounded-full"
+                            style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
+                            <img src="https://feofo.com/wp-content/uploads/2025/10/Untitled-design-21.png"
+                                alt="Krushna Bochare">
+
                         </div>
                         <h3
                             style="font-family:'Orbitron',sans-serif;font-size:1.2rem;font-weight:900;margin-bottom:8px;">
@@ -1709,7 +1777,8 @@
                         <p
                             style="font-size:.75rem;color:var(--neon-cyan);font-family:'Space Mono',monospace;letter-spacing:.15em;margin-bottom:16px;">
                             FOUNDER & DIGITAL STRATEGIST</p>
-                        <p class="text-muted" style="font-size:.85rem;line-height:1.7;">An engineer by profession and digital
+                        <p class="text-muted" style="font-size:.85rem;line-height:1.7;">An engineer by profession and
+                            digital
                             creator by passion. With hands-on experience in content creation, digital marketing, and
                             online business management since 2016, Krushna built FEOFO to empower businesses with the
                             digital tools they need to succeed.</p>
@@ -1721,14 +1790,15 @@
                             Profile →</a>
                     </div>
 
-                   
+
                 </div>
                 <!-- <h4 class="text-primary" style="font-family:'Orbitron',sans-serif;font-size:.9rem;margin-bottom:16px;"
                 class="reveal">Our Core Values</h4> -->
-          
+
             </div>
             <div>
-                <div style="display: flex; flex-direction: row; gap: 16px; justify-content: between; align-items: center;">
+                <div
+                    style="display: flex; flex-direction: row; gap: 16px; justify-content: between; align-items: center;">
                     <div class=" w-25p">
                         <div class="val-icon"><i class="fa-solid fa-fire"></i></div>
                         <div class="val-title">Passionate</div>
@@ -1767,14 +1837,20 @@
                         pressure, no fluff.</p>
                     <div class="contact-links">
                         <a class="clink" href="tel:917028221812"><i class="fa-solid fa-phone"></i> +91 7028221812</a>
-                        <a class="clink" href="mailto:info@feofo.com"><i class="fa-solid fa-envelope"></i> info@feofo.com</a>
-                        <a class="clink" href="https://feofo.com" target="_blank"><i class="fa-solid fa-globe"></i> feofo.com</a>
-                        <a class="clink" href="https://www.linkedin.com/company/feofo" target="_blank"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
-                        <a class="clink" href="https://www.instagram.com/FEOFOServices" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                        <a class="clink" href="mailto:info@feofo.com"><i class="fa-solid fa-envelope"></i>
+                            info@feofo.com</a>
+                        <a class="clink" href="https://feofo.com" target="_blank"><i class="fa-solid fa-globe"></i>
+                            feofo.com</a>
+                        <a class="clink" href="https://www.linkedin.com/company/feofo" target="_blank"><i
+                                class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
+                        <a class="clink" href="https://www.instagram.com/FEOFOServices" target="_blank"><i
+                                class="fa-brands fa-instagram"></i> Instagram</a>
                     </div>
-                    <p
-                        class="text-muted" style="font-family:'Space Mono',monospace;font-size:.65rem;margin-top:24px;letter-spacing:.1em;">
-                        <i class="fa-solid fa-location-dot" style="margin-right:6px;"></i>Pune, Maharashtra, India &nbsp;|&nbsp; Serving clients globally</p>
+                    <p class="text-muted"
+                        style="font-family:'Space Mono',monospace;font-size:.65rem;margin-top:24px;letter-spacing:.1em;">
+                        <i class="fa-solid fa-location-dot" style="margin-right:6px;"></i>Pune, Maharashtra, India
+                        &nbsp;|&nbsp; Serving clients globally
+                    </p>
                 </div>
             </div>
         </div>
@@ -1787,15 +1863,15 @@
             <div class="section-header reveal">
                 <span class="section-badge">// Our Portfolio</span>
                 <h2 class="section-title">Our <span class="grad-text">Works</span></h2>
-                <p
-                    class="text-muted" style="margin-top:16px;font-size:.95rem;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.7;">
+                <p class="text-muted"
+                    style="margin-top:16px;font-size:.95rem;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.7;">
                     Real projects. Real results. 22 from portfolio plus client sites .
                 </p>
             </div>
 
             <div class="portfolio-grid" id="portfolioGrid"></div>
 
-           
+
         </div>
     </section>
 
@@ -1804,8 +1880,8 @@
         <div class="footer-inner">
             <div>
                 <div class="footer-logo grad-text">FEOFO.COM</div>
-                <div
-                    class="text-muted" style="font-family:'Space Mono',monospace;font-size:.6rem;margin-top:6px;letter-spacing:.1em;">
+                <div class="text-muted"
+                    style="font-family:'Space Mono',monospace;font-size:.6rem;margin-top:6px;letter-spacing:.1em;">
                     DIGITAL MARKETING & IT SOLUTIONS</div>
             </div>
             <div class="footer-links">
@@ -1815,11 +1891,16 @@
                 <a href="https://feofo.com/contact/" target="_blank">Contact</a>
             </div>
             <div class="social-links">
-                <a class="soc" href="https://www.instagram.com/FEOFOServices" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a class="soc" href="https://www.linkedin.com/company/feofo" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a class="soc" href="https://www.facebook.com/FEOFOServices" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                <a class="soc" href="https://www.youtube.com/@feofo" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                <a class="soc" href="https://x.com/FEOFOMedia" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                <a class="soc" href="https://www.instagram.com/FEOFOServices" target="_blank" aria-label="Instagram"><i
+                        class="fa-brands fa-instagram"></i></a>
+                <a class="soc" href="https://www.linkedin.com/company/feofo" target="_blank" aria-label="LinkedIn"><i
+                        class="fa-brands fa-linkedin-in"></i></a>
+                <a class="soc" href="https://www.facebook.com/FEOFOServices" target="_blank" aria-label="Facebook"><i
+                        class="fa-brands fa-facebook-f"></i></a>
+                <a class="soc" href="https://www.youtube.com/@feofo" target="_blank" aria-label="YouTube"><i
+                        class="fa-brands fa-youtube"></i></a>
+                <a class="soc" href="https://x.com/FEOFOMedia" target="_blank" aria-label="X"><i
+                        class="fa-brands fa-x-twitter"></i></a>
             </div>
             <div class="footer-copy">© 2026 FEOFO · All Rights Reserved · Pune, India</div>
         </div>
@@ -1857,7 +1938,7 @@
             },
             {
                 name: "Amruta Nikam",
-                role: "Full-Stack Web Developer UiUx Creative Designs", 
+                role: "Full-Stack Web Developer UiUx Creative Designs",
                 bio: "Amruta is a talented Web Developer with 2+ years of experience in building responsive and user-friendly websites.",
                 image: "https://feofo.com/wp-content/uploads/2025/03/Untitled-design-77.png",
                 link: null
@@ -1877,14 +1958,14 @@
                 link: null
             },
             {
-                name: "Tushar Kholhe",
+                name: "Tushar Kolhe",
                 role: "Web Developer · AWS & DevOps",
                 bio: "Tushar handles web development together with AWS infrastructure, server operations, and database management.",
-                image: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1773132025/Untitled_design_2_id9xmn.jpg",
+                image: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1773140025/tushar_q9bvm1.jpg",
                 link: null
             },
             {
-                name: "Rohit Weer",
+                name: "Rohit Veer",
                 role: "Junior Web Developer",
                 bio: "Rohit is a junior web developer contributing to modern, responsive frontends and implementation of UI components.",
                 image: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1773131705/ChatGPT_Image_Mar_10_2026_01_41_02_PM_tovi2i.png",
@@ -1911,8 +1992,8 @@
                 image: "https://res.cloudinary.com/dahbnl1y3/image/upload/v1773133192/1736055474543.jpg_1_m2hioa.jpg",
                 link: null
             },
-          
-           
+
+
             {
                 name: "Aniket Shinde",
                 role: "Photo & Video Editor · Social Media Manager",
@@ -1941,7 +2022,7 @@
                 // image: "https://feofo.com/wp-content/uploads/2025/10/Untitled-design-21.png",
                 link: null
             }
-         
+
         ];
 
         const PORTFOLIO_PROJECTS = [
@@ -2000,16 +2081,16 @@
                 card.dataset.index = index;
                 card.innerHTML =
                     '<div class="team-avatar border">' +
-                        '<img src="' + m.image + '" alt="' + m.name.replace(/"/g, '&quot;') + '">' +
+                    '<img src="' + m.image + '" alt="' + m.name.replace(/"/g, '&quot;') + '">' +
                     '</div>' +
                     '<div>' +
-                        '<div class="team-name">' + m.name + '</div>' +
-                        '<div class="team-role">' + m.role + '</div>' +
+                    '<div class="team-name">' + m.name + '</div>' +
+                    '<div class="team-role">' + m.role + '</div>' +
                     '</div>' +
                     '<div class="team-bio">' + m.bio + '</div>' +
                     '<div class="team-meta">' +
-                        (m.link ? '<a class="team-link" href="' + m.link + '" target="_blank" rel="noopener">VIEW PROFILE →</a>' : '<span class="text-muted" style="font-size:.7rem;">CORE TEAM</span>') +
-                        '<span class="text-muted" style="font-size:.7rem;">FEOFO TEAM</span>' +
+                    (m.link ? '<a class="team-link" href="' + m.link + '" target="_blank" rel="noopener">VIEW PROFILE →</a>' : '<span class="text-muted" style="font-size:.7rem;">CORE TEAM</span>') +
+                    '<span class="text-muted" style="font-size:.7rem;">FEOFO TEAM</span>' +
                     '</div>';
                 grid.appendChild(card);
             });
